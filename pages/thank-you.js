@@ -15,6 +15,7 @@ import { GlobalHead } from "../Components/GlobalHead";
 import styles from "../styles/main.module.css";
 import { GlobalNav } from "../Components/GlobalNav";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { GlobalFooter } from "../Components/GlobalFooter";
 
 export const LoadingStatus = ({ trackName, playlistName }) => {
   return (
@@ -55,16 +56,17 @@ export const Converter = () => {
                 component="p"
                 className={styles.paragraphText}
               >
-                Congrats! You just replaced {tracks || 'all'} songs in {playlists || 'all'} of your playlists
-                with Taylor’s Version. Thank you for supporting Taylor
-                rightfully owning her music. Long story short, we survived! Feel
-                free to share this with other Swifties!{" "}
+                Congrats! You just replaced {tracks || "all"} songs in{" "}
+                {playlists || "all"} of your playlists with Taylor’s Version.
+                Thank you for supporting Taylor rightfully owning her music.
+                Long story short, we survived! Feel free to share this with
+                other Swifties!{" "}
               </Typography>
             </Grid>
           </Grid>
         </main>
 
-        <footer></footer>
+        <GlobalFooter />
       </div>
     </ThemeProvider>
   );

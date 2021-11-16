@@ -10,10 +10,9 @@ import { GlobalNav } from "../Components/GlobalNav";
 import { theme } from "../public/theme";
 import { PrimaryButton } from "../Components/PrimaryButton";
 
-const spotifyScopes =
-  "user-read-private user-read-email user-library-read playlist-modify-private playlist-read-private playlist-modify-public playlist-read-collaborative";
-const redirectUri = "http://localhost:3000/callback";
-const myClientId = "f1cd7e959aa541fdb32ae56f4a983b91";
+const spotifyScopes = process.env.NEXT_SPOTIFY_SCOPES;
+const redirectUri = "https://spotifytaylorsversion.com/callback";
+const myClientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 
 export const Home = () => {
   const router = useRouter();

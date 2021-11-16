@@ -25,3 +25,14 @@
   font-size: 1em !important;
 }
 
+.footerContainer {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 180px;
+}
+
+.footerContent {
+  max-width: min(80ch, 90%);
+}

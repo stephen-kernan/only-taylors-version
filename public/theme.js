@@ -33,6 +33,11 @@ export const theme = createTheme({
       fontWeightBold: 700,
       fontStyle: "italic",
     },
+    body2: {
+      textTransform: "uppercase",
+      textAlign: "center",
+      fontSize: "0.75em",
+    },
     fontFamily: "Open Sans Condensed",
 
     fontSize: 24,
