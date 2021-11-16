@@ -27,7 +27,8 @@ export const LoadingResults = () => {
       </Grid>
       <Grid item xs={12} className={styles.paragraphContainer}>
         <Typography variant="h1" component="p" className={styles.paragraphText}>
-          UPDATING PLAYLISTS
+          UPDATING PLAYLISTS <br /> PLEASE DON'T REFRESH, THIS COULD TAKE A
+          MINUTE
         </Typography>
       </Grid>
     </Grid>
@@ -86,7 +87,7 @@ export const Confirmation = () => {
     if (token) {
       const url = await replaceWithTaylorsVersion(token);
       if (url) {
-        router.push(url)
+        router.push(url);
       }
     }
   };

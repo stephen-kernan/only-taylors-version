@@ -140,50 +140,55 @@ export const findOldVersionsInPlaylist = async (tracksInPlaylist = []) => {
 };
 
 export const replaceWithTaylorsVersion = async (token) => {
-  const playlists = await fetchUserPlaylists(token);
-  let numberOfTracksUpdated = 0;
-  let numberOfPlaylistsUpdated = 0;
+  try {
+    const playlists = await fetchUserPlaylists(token);
+    let numberOfTracksUpdated = 0;
+    let numberOfPlaylistsUpdated = 0;
 
-  for (const playlist of playlists) {
-    if (playlist.tracks.total === 0) {
-      return;
+    for (const playlist of playlists) {
+      if (playlist.tracks.total === 0) {
+        return;
+      }
+
+      const tracksInPlaylist = await fetchTracksInPlaylist(
+        token,
+        playlist.tracks.href,
+        playlist.tracks.total
+      );
+      const [tracksToReplace, tracksToAdd] = await findOldVersionsInPlaylist(
+        tracksInPlaylist
+      );
+
+      await deleteTracksInPlaylist(
+        token,
+        playlist.id,
+        tracksToReplace.length,
+        tracksToReplace
+      );
+
+      await addTracksToPlaylist(
+        token,
+        playlist.id,
+        tracksToAdd.length,
+        tracksToAdd
+      );
+
+      if (tracksToReplace.length) {
+        numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length;
+        numberOfPlaylistsUpdated = numberOfPlaylistsUpdated + 1;
+      }
     }
 
-    const tracksInPlaylist = await fetchTracksInPlaylist(
-      token,
-      playlist.tracks.href,
-      playlist.tracks.total
-    );
-    const [tracksToReplace, tracksToAdd] = await findOldVersionsInPlaylist(
-      tracksInPlaylist
-    );
-
-    await deleteTracksInPlaylist(
-      token,
-      playlist.id,
-      tracksToReplace.length,
-      tracksToReplace
-    );
-
-    await addTracksToPlaylist(
-      token,
-      playlist.id,
-      tracksToAdd.length,
-      tracksToAdd
-    );
-
-    if (tracksToReplace.length) {
-      numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length;
-      numberOfPlaylistsUpdated = numberOfPlaylistsUpdated + 1;
-    }
+    let queryString = `${
+      numberOfTracksUpdated ? `tracks=${numberOfTracksUpdated}&` : ""
+    }${
+      numberOfPlaylistsUpdated && numberOfTracksUpdated
+        ? `playlists=${numberOfPlaylistsUpdated}`
+        : ""
+    }`;
+    return `/thank-you?${queryString}`;
+  } catch (err) {
+    console.log(err);
+    return `/uh-oh`;
   }
-
-  let queryString = `${
-    numberOfTracksUpdated ? `tracks=${numberOfTracksUpdated}&` : ""
-  }${
-    numberOfPlaylistsUpdated && numberOfTracksUpdated
-      ? `playlists=${numberOfPlaylistsUpdated}`
-      : ""
-  }`;
-  return `/thank-you?${queryString}`;
 };
