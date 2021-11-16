@@ -52,7 +52,7 @@ export const Converter = () => {
             </Grid>
             <Grid item xs={12} className={styles.paragraphContainer}>
               <Typography
-                variant="h1"
+                variant="body1"
                 component="p"
                 className={styles.paragraphText}
               >

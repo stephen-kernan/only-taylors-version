@@ -10,6 +10,7 @@ import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 
 import React, { useEffect, useState } from "react";
+import { GlobalFooter } from "../Components/GlobalFooter";
 import { GlobalHead } from "../Components/GlobalHead";
 import { GlobalNav } from "../Components/GlobalNav";
 import { PrimaryButton } from "../Components/PrimaryButton";
@@ -107,7 +108,7 @@ export const Confirmation = () => {
           )}
         </main>
 
-        <footer></footer>
+        <GlobalFooter />
       </div>
     </ThemeProvider>
   );

@@ -171,8 +171,11 @@ export const replaceWithTaylorsVersion = async (token) => {
       tracksToAdd.length,
       tracksToAdd
     );
-    numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length;
-    numberOfPlaylistsUpdated = numberOfPlaylistsUpdated + 1;
+
+    if (tracksToReplace.length) {
+      numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length;
+      numberOfPlaylistsUpdated = numberOfPlaylistsUpdated + 1;
+    }
   }
 
   console.log("done and redirecting");

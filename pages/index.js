@@ -9,6 +9,7 @@ import { GlobalHead } from "../Components/GlobalHead";
 import { GlobalNav } from "../Components/GlobalNav";
 import { theme } from "../public/theme";
 import { PrimaryButton } from "../Components/PrimaryButton";
+import { GlobalFooter } from "../Components/GlobalFooter";
 
 const spotifyScopes = process.env.NEXT_SPOTIFY_SCOPES;
 const redirectUri = "https://spotifytaylorsversion.com/callback";
@@ -76,7 +77,7 @@ export const Home = () => {
           </Grid>
         </main>
 
-        <footer></footer>
+        <GlobalFooter />
       </div>
     </ThemeProvider>
   );
