@@ -9,8 +9,8 @@ import { theme } from "../public/theme";
 import { PrimaryButton } from "../Components/PrimaryButton";
 import { GlobalFooter } from "../Components/GlobalFooter";
 
-const spotifyScopes = process.env.NEXT_SPOTIFY_SCOPES;
-const redirectUri = "https://spotifytaylorsversion.com/callback";
+const spotifyScopes = process.env.NEXT_PUBLIC_SPOTIFY_SCOPES;
+const redirectUri = process.env.NEXT_PUBLIC_CALLBACK_URI;
 const myClientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 
 export const Home = () => {
