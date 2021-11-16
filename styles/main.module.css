@@ -1,0 +1,27 @@
+.headers {
+  font-weight: 700 !important;
+}
+
+.pageContainer {
+  padding-top: 2em !important;
+}
+
+.paragraphContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.paragraphText {
+  max-width: min(50ch, 90%);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.primaryButton {
+  box-shadow: -4px 4px 0px #d3d2d7 !important;
+  margin-left: 2px !important;
+  border-radius: 0 !important;
+  font-size: 1em !important;
+}
+
