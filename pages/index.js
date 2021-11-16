@@ -1,9 +1,7 @@
 import { ThemeProvider } from "@emotion/react";
-import { Button, CssBaseline, Grid, Typography } from "@mui/material";
+import { CssBaseline, Grid, Typography } from "@mui/material";
 import styles from "../styles/main.module.css";
-import axios from "axios";
 import { useRouter } from "next/dist/client/router";
-import Head from "next/head";
 import { useEffect } from "react";
 import { GlobalHead } from "../Components/GlobalHead";
 import { GlobalNav } from "../Components/GlobalNav";
@@ -61,10 +59,9 @@ export const Home = () => {
                 component="p"
                 className={styles.paragraphText}
               >
-                This is a Sc***er B***n hate page. We have created a way to
-                replace all of the Taylor Swift original recordings in your
-                playlists with Taylor’s Version by simply clicking a button.
-                …Are you ready for it?
+                We have created a way to replace all of the Taylor Swift
+                original recordings in your Spotify playlists with Taylor’s
+                Version by simply clicking a button… Are you ready for it?
               </Typography>
             </Grid>
             <Grid

@@ -34,6 +34,14 @@
   padding-bottom: 1em;
 }
 
+.disclaimer {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 1em;
+}
+
 .footerContent {
   max-width: min(80ch, 90%);
 }

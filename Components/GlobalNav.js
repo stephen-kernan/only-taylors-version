@@ -22,7 +22,7 @@ export const GlobalNav = () => {
             }}
             className={styles.headers}
           >
-            SPOTIFY (TAYLOR'S VERSION)
+            ONLY (TAYLOR'S VERSION)
           </Typography>
         </Link>
       </Toolbar>

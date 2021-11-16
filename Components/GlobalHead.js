@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-export const GlobalHead = ({ title = "Spotify (Taylor's Version)" }) => {
+export const GlobalHead = ({ title = "ONLY (TAYLOR'S VERSION)" }) => {
   return (
     <Head>
       <title>{title}</title>

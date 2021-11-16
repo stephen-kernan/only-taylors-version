@@ -1,5 +1,4 @@
 import {
-  Button,
   CircularProgress,
   CssBaseline,
   Grid,
@@ -7,10 +6,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useRouter } from "next/dist/client/router";
-import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { theme } from "../public/theme";
-import helpers, { replaceWithTaylorsVersion } from "../helpers/trackConverter";
 import { GlobalHead } from "../Components/GlobalHead";
 import styles from "../styles/main.module.css";
 import { GlobalNav } from "../Components/GlobalNav";
@@ -32,7 +29,6 @@ export const LoadingStatus = ({ trackName, playlistName }) => {
 };
 
 export const Converter = () => {
-  console.log(replaceWithTaylorsVersion);
   const router = useRouter();
   const { tracks, playlists } = router.query;
 

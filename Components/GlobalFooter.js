@@ -30,6 +30,16 @@ export const GlobalFooter = () => {
           </Link>
         </Typography>
       </div>
+      <div className={styles.disclaimer}>
+        <Typography
+          variant="body2"
+          component="p"
+          className={styles.footerContent}
+        >
+          *This application is fan-made and is in no way endorsed by Taylor
+          Swift or Spotify
+        </Typography>
+      </div>
     </footer>
   );
 };

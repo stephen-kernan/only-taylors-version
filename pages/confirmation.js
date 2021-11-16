@@ -1,5 +1,4 @@
 import {
-  Button,
   CircularProgress,
   CssBaseline,
   Grid,
@@ -7,7 +6,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useRouter } from "next/dist/client/router";
-import Head from "next/head";
 
 import React, { useEffect, useState } from "react";
 import { GlobalFooter } from "../Components/GlobalFooter";
