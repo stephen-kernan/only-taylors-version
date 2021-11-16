@@ -71,7 +71,7 @@ export const deleteTracksInPlaylist = async (
   trackIds
 ) => {
   if (!trackIds || !trackIds.length) {
-    return;
+    return [];
   }
   for (let i = 0; i <= total; i += 100) {
     // i through i + 99 = 100 items. number 100 will be hit on next round
@@ -97,7 +97,7 @@ export const addTracksToPlaylist = async (
   trackIds
 ) => {
   if (!trackIds || !trackIds.length) {
-    return;
+    return [];
   }
   for (let i = 0; i <= total; i += 100) {
     // i through i + 99 = 100 items. number 100 will be hit on next round
@@ -121,12 +121,12 @@ export const addTracksToPlaylist = async (
   }
 };
 
-export const findOldVersionsInPlaylist = async (tracksInPlaylist) => {
+export const findOldVersionsInPlaylist = async (tracksInPlaylist = []) => {
   const tracksToReplace = [];
   const tracksToAdd = [];
 
-  await tracksInPlaylist.forEach((track) => {
-    if (conversionMap[track.track.id]) {
+  for (const track of tracksInPlaylist) {
+    if (conversionMap[track?.track?.id]) {
       tracksToReplace.push({
         uri: `spotify:track:${track.track.id}`,
       });
@@ -134,7 +134,7 @@ export const findOldVersionsInPlaylist = async (tracksInPlaylist) => {
         `spotify:track:${conversionMap[track.track.id].taylorsVersionId}`
       );
     }
-  });
+  }
 
   return [tracksToReplace, tracksToAdd];
 };
@@ -178,7 +178,6 @@ export const replaceWithTaylorsVersion = async (token) => {
     }
   }
 
-  console.log("done and redirecting");
   let queryString = `${
     numberOfTracksUpdated ? `tracks=${numberOfTracksUpdated}&` : ""
   }${
