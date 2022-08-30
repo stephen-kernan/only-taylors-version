@@ -1,9 +1,10 @@
 import React from "react";
 import Head from "next/head";
 
-export const GlobalHead = ({ title = "ONLY (TAYLOR'S VERSION)" }) => {
+export const GlobalHead = ({ title = "Only (Taylor's Version)" }) => {
   return (
     <Head>
+      <link rel="icon" href="/initial-2.png" type="image/icon type" />
       <title>{title}</title>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
