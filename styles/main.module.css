@@ -1,5 +1,11 @@
 .headers {
-  font-weight: 700 !important;
+  font-weight: 500 !important;
+}
+
+.container {
+  background-image: url("/background-gradient.jpeg") !important;
+  background-size: cover;
+  height: 100vh;
 }
 
 .pageContainer {
@@ -15,14 +21,16 @@
 .paragraphText {
   max-width: min(50ch, 90%);
   text-align: center;
-  text-transform: uppercase;
+  font-style: italic;
+  /* text-transform: uppercase; */
 }
 
 .primaryButton {
-  box-shadow: -4px 4px 0px #d3d2d7 !important;
   margin-left: 2px !important;
   border-radius: 0 !important;
   font-size: 1em !important;
+  font-weight: 700;
+  text-transform: none;
 }
 
 .footerContainer {
@@ -32,6 +40,7 @@
   align-items: flex-end;
   min-height: 180px;
   padding-bottom: 1em;
+  font-style: italic;
 }
 
 .disclaimer {

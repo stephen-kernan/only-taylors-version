@@ -8,6 +8,7 @@ import { GlobalNav } from "../Components/GlobalNav";
 import { theme } from "../public/theme";
 import { PrimaryButton } from "../Components/PrimaryButton";
 import { GlobalFooter } from "../Components/GlobalFooter";
+import { Mixpanel } from "../helpers/mixPanel";
 
 const spotifyScopes = process.env.NEXT_PUBLIC_SPOTIFY_SCOPES;
 const redirectUri = process.env.NEXT_PUBLIC_CALLBACK_URI;
@@ -17,12 +18,19 @@ export const Home = () => {
   const router = useRouter();
 
   useEffect(() => {
+    const referrer = document.referrer;
+    console.log("referrer => ", referrer.split("?")[0]);
+    Mixpanel.track("Landing page");
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem("spotifyAccessToken")) {
       router.push("/converter");
     }
   });
 
   const loginWithSpotify = () => {
+    Mixpanel.track("Redirect to login");
     window.location =
       "https://accounts.spotify.com/authorize" +
       "?response_type=token" +
@@ -36,7 +44,7 @@ export const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="container">
+      <div className={styles.container}>
         <GlobalHead />
 
         <main>
@@ -49,6 +57,7 @@ export const Home = () => {
                 component="h2"
                 textAlign="center"
                 className={styles.headers}
+                style={{ color: theme.palette.text.header }}
               >
                 NO MORE STOLEN LULLABIES
               </Typography>
@@ -69,7 +78,7 @@ export const Home = () => {
               xs={12}
               sx={{ display: "flex", justifyContent: "center" }}
             >
-              <PrimaryButton label="LOGIN TO SPOTIFY" fn={loginWithSpotify} />
+              <PrimaryButton label="Login to Spotify" fn={loginWithSpotify} />
             </Grid>
           </Grid>
         </main>

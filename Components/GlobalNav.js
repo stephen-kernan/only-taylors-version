@@ -1,5 +1,4 @@
 import { AppBar, Link, Toolbar, Typography } from "@mui/material";
-import styles from '../styles/main.module.css'
 
 export const GlobalNav = () => {
   return (
@@ -7,8 +6,8 @@ export const GlobalNav = () => {
       <Toolbar
         sx={{
           bgcolor: "primary.main",
-          paddingTop: "2em",
-          paddingBottom: "1em",
+          paddingTop: "0.5em",
+          paddingBottom: "0.5em",
         }}
       >
         <Link href="/" sx={{ width: "100%" }}>
@@ -19,10 +18,10 @@ export const GlobalNav = () => {
               color: "primary.contrastText",
               textAlign: "center",
               width: "100%",
+              fontWeight: 700,
             }}
-            className={styles.headers}
           >
-            ONLY (TAYLOR'S VERSION)
+            Only (Taylor's Version)
           </Typography>
         </Link>
       </Toolbar>

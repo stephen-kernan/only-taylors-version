@@ -283,6 +283,14 @@ export const conversionMap = {
     taylorsVersionId: "22bPsP2jCgbLUvh82U0Z3M",
     trackName: "The Way I Loved You",
   },
+  "1kTPQnabROVkW9bUXdCGrB": {
+    taylorsVersionId: "4d1CG5ei1E2vGbvmgf5KKv",
+    trackName: "This Love",
+  },
+  "59HjlYCeBsxdI0fcm3zglw": {
+    taylorsVersionId: "1Ov37jtRQ2YNAe8HzfczkL",
+    trackName: "Wildest Dreams",
+  },
 };
 
 const alternativeVersions = {

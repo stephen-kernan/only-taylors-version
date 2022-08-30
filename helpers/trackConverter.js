@@ -28,7 +28,6 @@ export const fetchUserPlaylists = async (token) => {
     });
 
   while (playlists.length < total) {
-    console.log("playlists length => ", playlists.length);
     await axios
       .get(
         `https://api.spotify.com/v1/me/playlists?offset=${

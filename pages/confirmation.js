@@ -12,6 +12,7 @@ import { GlobalFooter } from "../Components/GlobalFooter";
 import { GlobalHead } from "../Components/GlobalHead";
 import { GlobalNav } from "../Components/GlobalNav";
 import { PrimaryButton } from "../Components/PrimaryButton";
+import { Mixpanel } from "../helpers/mixPanel";
 import { replaceWithTaylorsVersion } from "../helpers/trackConverter";
 import { theme } from "../public/theme";
 
@@ -42,6 +43,7 @@ export const ConfirmationContent = ({ confirmChoice }) => {
           component="h2"
           textAlign="center"
           className={styles.headers}
+          style={{ color: theme.palette.text.header }}
         >
           LET’S DIVE IN HEAD FIRST, FEARLESS
         </Typography>
@@ -59,7 +61,7 @@ export const ConfirmationContent = ({ confirmChoice }) => {
         </Typography>
       </Grid>
       <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-        <PrimaryButton label="REPLACE TRACKS" fn={confirmChoice} />
+        <PrimaryButton label="Replace Tracks" fn={confirmChoice} />
       </Grid>
     </Grid>
   );
@@ -69,6 +71,10 @@ export const Confirmation = () => {
   const router = useRouter();
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    Mixpanel.track("User logged in successfully");
+  }, []);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("access_token");
@@ -81,11 +87,12 @@ export const Confirmation = () => {
   });
 
   const confirmChoice = async () => {
+    Mixpanel.track("User clicked confirm");
     setLoading(true);
     if (token) {
       const url = await replaceWithTaylorsVersion(token);
       if (url) {
-        router.push(url);
+        window.location = url;
       }
     }
   };
@@ -94,7 +101,7 @@ export const Confirmation = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <div className="container">
+      <div className={styles.container}>
         <GlobalHead />
 
         <main>

@@ -6,13 +6,14 @@ import {
   Typography,
 } from "@mui/material";
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { theme } from "../public/theme";
 import { GlobalHead } from "../Components/GlobalHead";
 import styles from "../styles/main.module.css";
 import { GlobalNav } from "../Components/GlobalNav";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { GlobalFooter } from "../Components/GlobalFooter";
+import { Mixpanel } from "../helpers/mixPanel";
 
 export const LoadingStatus = ({ trackName, playlistName }) => {
   return (
@@ -30,13 +31,24 @@ export const LoadingStatus = ({ trackName, playlistName }) => {
 
 export const Converter = () => {
   const router = useRouter();
-  const { tracks, playlists } = router.query;
+  const { tracks = 0, playlists = 0 } = router.query;
+
+  useEffect(() => {
+    Mixpanel.identify(localStorage.getItem("access_token"));
+    Mixpanel.track("User successfully updated tracks", { tracks, playlists });
+    if (tracks > 0) {
+      Mixpanel.people.increment("tracksUpdated", tracks);
+    }
+    if (playlists > 0) {
+      Mixpanel.people.increment("playlistsUpdated", playlists);
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <div className="container">
+      <div className={styles.container}>
         <GlobalHead />
 
         <main>
@@ -56,7 +68,7 @@ export const Converter = () => {
                 {playlists || "all"} of your playlists with Taylor’s Version.
                 Thank you for supporting Taylor rightfully owning her music.
                 Long story short, we survived! Feel free to share this with
-                other Swifties!{" "}
+                other Swifties!
               </Typography>
             </Grid>
           </Grid>
