@@ -36,7 +36,7 @@ export const Converter = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <div className="container">
+      <div className={styles.container}>
         <GlobalHead />
 
         <main>

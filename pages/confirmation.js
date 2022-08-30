@@ -42,6 +42,7 @@ export const ConfirmationContent = ({ confirmChoice }) => {
           component="h2"
           textAlign="center"
           className={styles.headers}
+          style={{ color: theme.palette.text.header }}
         >
           LET’S DIVE IN HEAD FIRST, FEARLESS
         </Typography>
@@ -59,7 +60,7 @@ export const ConfirmationContent = ({ confirmChoice }) => {
         </Typography>
       </Grid>
       <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-        <PrimaryButton label="REPLACE TRACKS" fn={confirmChoice} />
+        <PrimaryButton label="Replace Tracks" fn={confirmChoice} />
       </Grid>
     </Grid>
   );
@@ -85,7 +86,7 @@ export const Confirmation = () => {
     if (token) {
       const url = await replaceWithTaylorsVersion(token);
       if (url) {
-        router.push(url);
+        window.location = url;
       }
     }
   };
@@ -94,7 +95,7 @@ export const Confirmation = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <div className="container">
+      <div className={styles.container}>
         <GlobalHead />
 
         <main>

@@ -36,7 +36,7 @@ export const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="container">
+      <div className={styles.container}>
         <GlobalHead />
 
         <main>
@@ -49,6 +49,7 @@ export const Home = () => {
                 component="h2"
                 textAlign="center"
                 className={styles.headers}
+                style={{ color: theme.palette.text.header }}
               >
                 NO MORE STOLEN LULLABIES
               </Typography>
@@ -69,7 +70,7 @@ export const Home = () => {
               xs={12}
               sx={{ display: "flex", justifyContent: "center" }}
             >
-              <PrimaryButton label="LOGIN TO SPOTIFY" fn={loginWithSpotify} />
+              <PrimaryButton label="Login to Spotify" fn={loginWithSpotify} />
             </Grid>
           </Grid>
         </main>
