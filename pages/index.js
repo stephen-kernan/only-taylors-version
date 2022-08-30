@@ -8,6 +8,7 @@ import { GlobalNav } from "../Components/GlobalNav";
 import { theme } from "../public/theme";
 import { PrimaryButton } from "../Components/PrimaryButton";
 import { GlobalFooter } from "../Components/GlobalFooter";
+import { Mixpanel } from "../helpers/mixPanel";
 
 const spotifyScopes = process.env.NEXT_PUBLIC_SPOTIFY_SCOPES;
 const redirectUri = process.env.NEXT_PUBLIC_CALLBACK_URI;
@@ -17,12 +18,19 @@ export const Home = () => {
   const router = useRouter();
 
   useEffect(() => {
+    const referrer = document.referrer;
+    console.log("referrer => ", referrer.split("?")[0]);
+    Mixpanel.track("Landing page");
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem("spotifyAccessToken")) {
       router.push("/converter");
     }
   });
 
   const loginWithSpotify = () => {
+    Mixpanel.track("Redirect to login");
     window.location =
       "https://accounts.spotify.com/authorize" +
       "?response_type=token" +

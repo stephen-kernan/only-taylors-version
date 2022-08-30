@@ -1,5 +1,4 @@
 import { AppBar, Link, Toolbar, Typography } from "@mui/material";
-import styles from "../styles/main.module.css";
 
 export const GlobalNav = () => {
   return (

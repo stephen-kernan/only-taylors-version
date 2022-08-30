@@ -12,6 +12,7 @@ import { GlobalFooter } from "../Components/GlobalFooter";
 import { GlobalHead } from "../Components/GlobalHead";
 import { GlobalNav } from "../Components/GlobalNav";
 import { PrimaryButton } from "../Components/PrimaryButton";
+import { Mixpanel } from "../helpers/mixPanel";
 import { replaceWithTaylorsVersion } from "../helpers/trackConverter";
 import { theme } from "../public/theme";
 
@@ -72,6 +73,10 @@ export const Confirmation = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    Mixpanel.track("User logged in successfully");
+  }, []);
+
+  useEffect(() => {
     const storedToken = localStorage.getItem("access_token");
 
     if (!storedToken) {
@@ -82,6 +87,7 @@ export const Confirmation = () => {
   });
 
   const confirmChoice = async () => {
+    Mixpanel.track("User clicked confirm");
     setLoading(true);
     if (token) {
       const url = await replaceWithTaylorsVersion(token);
