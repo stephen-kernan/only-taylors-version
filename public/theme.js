@@ -4,40 +4,43 @@ export const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "rgb(172, 158, 184)",
-      contrastText: "#0f1d28",
+      main: "#1F1025",
+      contrastText: "#FFF",
     },
     secondary: {
-      main: "#0f1d28",
+      main: "#502B5D",
     },
     text: {
-      header: "rgb(172, 158, 184)",
-      primary: "#e8e9e3",
+      header: "#2a153d",
+      primary: "#2a153d",
     },
     background: {
-      paper: "url(/background-gradient.jpeg)",
-      default: "url(/background-gradient.jpeg)",
+      paper: "url(/background-image__ts-speak-now.webp)",
+      default: "url(/background-image__ts-speak-now.webp)",
     },
   },
   typography: {
     h1: {
       fontSize: "1.5em",
-      fontWeightRegular: 500,
-      fontWeightMedium: 500,
-      fontWeightBold: 500,
+      fontFamily: "'Sacramento', 'Mr De Haviland', sans-serif;",
+      textTransform: "none",
+      fontColor: "#BFBAC0"
     },
     h2: {
       fontSize: "1.5em",
-      fontWeightRegular: 500,
-      fontWeightMedium: 500,
-      fontWeightBold: 500,
+      fontWeight: 700,
+    },
+    body1: {
+      fontWeight: 700,
+      textTransform: "uppercase"
     },
     body2: {
       textAlign: "center",
       fontSize: "0.75em",
+      fontWeight: 600,
+      textTransform: "uppercase"
     },
-    fontFamily: "Roboto",
-
+    fontFamily: "Playfair Display",
     fontSize: 24,
   },
 });

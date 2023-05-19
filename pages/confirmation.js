@@ -20,50 +20,53 @@ import styles from "../styles/main.module.css";
 
 export const LoadingResults = () => {
   return (
-    <Grid container spacing={4} className={styles.pageContainer}>
-      <Grid item xs={12} className={styles.paragraphContainer}>
-        <CircularProgress />
+    <div className={styles.pageContent}>
+      <Grid container spacing={4} className={styles.pageContainer}>
+        <Grid item xs={12} className={styles.paragraphContainer}>
+          <CircularProgress />
+        </Grid>
+        <Grid item xs={12} className={styles.paragraphContainer}>
+          <Typography variant="p" component="p" className={styles.paragraphText}>
+            UPDATING PLAYLISTS <br /> PLEASE DON'T REFRESH, THIS COULD TAKE A
+            MINUTE
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item xs={12} className={styles.paragraphContainer}>
-        <Typography variant="h1" component="p" className={styles.paragraphText}>
-          UPDATING PLAYLISTS <br /> PLEASE DON'T REFRESH, THIS COULD TAKE A
-          MINUTE
-        </Typography>
-      </Grid>
-    </Grid>
+    </div>
   );
 };
 
 export const ConfirmationContent = ({ confirmChoice }) => {
   return (
-    <Grid container spacing={4} className={styles.pageContainer}>
-      <Grid item xs={12}>
-        <Typography
-          variant="h2"
-          component="h2"
-          textAlign="center"
-          className={styles.headers}
-          style={{ color: theme.palette.text.header }}
-        >
-          LET’S DIVE IN HEAD FIRST, FEARLESS
-        </Typography>
+    <div className={styles.pageContent}>
+      <Grid container spacing={4} className={styles.pageContainer}>
+        <Grid item xs={12}>
+          <Typography
+            variant="h2"
+            component="h2"
+            textAlign="center"
+            className={styles.headers}
+          >
+            Let's Dive In Head First, Fearless
+          </Typography>
+        </Grid>
+        <Grid item xs={12} className={styles.paragraphContainer}>
+          <Typography
+            variant="body1"
+            component="p"
+            className={styles.paragraphText}
+          >
+            Just making sure you are okay with replacing all of your Taylor Swift
+            songs on your playlists with Taylor’s Version. There is no way to
+            reverse it. No need to cry like a baby coming home from the bar, just
+            click the button below!
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+          <PrimaryButton label="Replace Tracks" fn={confirmChoice} />
+        </Grid>
       </Grid>
-      <Grid item xs={12} className={styles.paragraphContainer}>
-        <Typography
-          variant="body1"
-          component="p"
-          className={styles.paragraphText}
-        >
-          Just making sure you are okay with replacing all of your Taylor Swift
-          songs on your playlists with Taylor’s Version. There is no way to
-          reverse it. No need to cry like a baby coming home from the bar, just
-          click the button below!
-        </Typography>
-      </Grid>
-      <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-        <PrimaryButton label="Replace Tracks" fn={confirmChoice} />
-      </Grid>
-    </Grid>
+    </div>
   );
 };
 

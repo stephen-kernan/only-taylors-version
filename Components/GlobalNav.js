@@ -15,10 +15,11 @@ export const GlobalNav = () => {
             variant="h1"
             component="h1"
             sx={{
-              color: "primary.contrastText",
               textAlign: "center",
               width: "100%",
               fontWeight: 700,
+              letterSpacing: "0.1rem",
+              color: "#BFBAC0",
             }}
           >
             Only (Taylor's Version)

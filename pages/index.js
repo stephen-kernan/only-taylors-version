@@ -50,37 +50,37 @@ export const Home = () => {
         <main>
           <GlobalNav />
 
-          <Grid container spacing={4} className={styles.pageContainer}>
-            <Grid item xs={12}>
-              <Typography
-                variant="h2"
-                component="h2"
-                textAlign="center"
-                className={styles.headers}
-                style={{ color: theme.palette.text.header }}
+          <div className={styles.pageContent}>
+            <Grid container spacing={4} className={styles.pageContainer}>
+              <Grid item xs={12}>
+                <Typography
+                  variant="h2"
+                  component="h2"
+                  textAlign="center"
+                >
+                  No More Stolen Lullabies
+                </Typography>
+              </Grid>
+              <Grid item xs={12} className={styles.paragraphContainer}>
+                <Typography
+                  variant="body1"
+                  component="p"
+                  className={styles.paragraphText}
+                >
+                  We have created a way to replace all of the Taylor Swift
+                  original recordings in your Spotify playlists with Taylor’s
+                  Version by simply clicking a button… Are you ready for it?
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{ display: "flex", justifyContent: "center" }}
               >
-                NO MORE STOLEN LULLABIES
-              </Typography>
+                <PrimaryButton label="Login to Spotify" fn={loginWithSpotify} />
+              </Grid>
             </Grid>
-            <Grid item xs={12} className={styles.paragraphContainer}>
-              <Typography
-                variant="body1"
-                component="p"
-                className={styles.paragraphText}
-              >
-                We have created a way to replace all of the Taylor Swift
-                original recordings in your Spotify playlists with Taylor’s
-                Version by simply clicking a button… Are you ready for it?
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
-              <PrimaryButton label="Login to Spotify" fn={loginWithSpotify} />
-            </Grid>
-          </Grid>
+          </div>
         </main>
 
         <GlobalFooter />

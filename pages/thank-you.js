@@ -54,24 +54,26 @@ export const Converter = () => {
         <main>
           <GlobalNav />
 
-          <Grid container spacing={4} className={styles.pageContainer}>
-            <Grid item xs={12} className={styles.paragraphContainer}>
-              <CheckCircleOutlineIcon fontSize="large" />
+          <div className={styles.pageContent}>
+            <Grid container spacing={4} className={styles.pageContainer}>
+              <Grid item xs={12} className={styles.paragraphContainer}>
+                <CheckCircleOutlineIcon fontSize="large" />
+              </Grid>
+              <Grid item xs={12} className={styles.paragraphContainer}>
+                <Typography
+                  variant="body1"
+                  component="p"
+                  className={styles.paragraphText}
+                >
+                  Congrats! You just replaced {tracks || "all"} songs in{" "}
+                  {playlists || "all"} of your playlists with Taylor’s Version.
+                  Thank you for supporting Taylor's rightful ownership of her music.
+                  Long story short, we survived! Feel free to share this with
+                  other Swifties!
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={12} className={styles.paragraphContainer}>
-              <Typography
-                variant="body1"
-                component="p"
-                className={styles.paragraphText}
-              >
-                Congrats! You just replaced {tracks || "all"} songs in{" "}
-                {playlists || "all"} of your playlists with Taylor’s Version.
-                Thank you for supporting Taylor rightfully owning her music.
-                Long story short, we survived! Feel free to share this with
-                other Swifties!
-              </Typography>
-            </Grid>
-          </Grid>
+          </div>
         </main>
 
         <GlobalFooter />

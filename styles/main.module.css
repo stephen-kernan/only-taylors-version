@@ -1,15 +1,14 @@
-.headers {
-  font-weight: 500 !important;
-}
-
 .container {
-  background-image: url("/background-gradient.jpeg") !important;
-  background-size: cover;
+  background-image: url("/background-image__ts-speak-now.webp") !important;
+  background-size: 5600px auto;
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: fixed;
   height: 100vh;
 }
 
-.pageContainer {
-  padding-top: 2em !important;
+.pageContent {
+  margin-block: 8rem;
 }
 
 .paragraphContainer {
@@ -21,16 +20,16 @@
 .paragraphText {
   max-width: min(50ch, 90%);
   text-align: center;
-  font-style: italic;
-  /* text-transform: uppercase; */
 }
 
 .primaryButton {
   margin-left: 2px !important;
+  padding: 1rem 3rem !important;
   border-radius: 0 !important;
   font-size: 1em !important;
-  font-weight: 700;
+  font-weight: 900;
   text-transform: none;
+  letter-spacing: 0.1rem;
 }
 
 .footerContainer {
@@ -38,7 +37,6 @@
   gap: 2em;
   justify-content: center;
   align-items: flex-end;
-  min-height: 180px;
   padding-bottom: 1em;
   font-style: italic;
 }
