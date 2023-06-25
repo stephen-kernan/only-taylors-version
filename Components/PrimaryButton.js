@@ -12,7 +12,6 @@ export const PrimaryButton = ({ label, fn }) => {
       sx={{
         fontWeight: 700,
         fontFamily: theme.typography.fontFamily,
-        textTransform: "none",
       }}
     >
       {label}

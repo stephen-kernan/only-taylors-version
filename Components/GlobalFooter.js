@@ -6,7 +6,7 @@ export const GlobalFooter = () => {
     <footer>
       <div className={styles.footerContainer}>
         <Typography
-          variant="body2"
+          variant="none"
           component="p"
           className={styles.footerContent}
         >
@@ -18,7 +18,7 @@ export const GlobalFooter = () => {
           </Link>
         </Typography>
         <Typography
-          variant="body2"
+          variant="none"
           component="p"
           className={styles.footerContent}
         >
@@ -29,10 +29,22 @@ export const GlobalFooter = () => {
             View Code
           </Link>
         </Typography>
+        <Typography
+          variant="none"
+          component="p"
+          className={styles.footerContent}
+        >
+          <Link
+            target="_blank"
+            href="https://www.buymeacoffee.com/stephenkernan"
+          >
+            Support This Site
+          </Link>
+        </Typography>
       </div>
       <div className={styles.disclaimer}>
         <Typography
-          variant="body2"
+          variant="body1"
           component="p"
           className={styles.footerContent}
         >
