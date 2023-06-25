@@ -16,15 +16,16 @@ export const theme = createTheme({
     },
     background: {
       paper: "url(/background-image__ts-speak-now.webp)",
+      header: "url(https://cdn.shopify.com/s/files/1/0011/4651/9637/t/243/assets/snpib.png)",
       default: "url(/background-image__ts-speak-now.webp)",
     },
   },
   typography: {
     h1: {
-      fontSize: "1.5em",
-      fontFamily: "'Sacramento', 'Mr De Haviland', sans-serif;",
+      fontSize: "2.25rem",
+      fontFamily: "'mina', 'Sacramento', 'Mr De Haviland', sans-serif;",
       textTransform: "none",
-      fontColor: "#BFBAC0"
+      color: "#FFF"
     },
     h2: {
       fontSize: "1.5em",
@@ -32,7 +33,8 @@ export const theme = createTheme({
     },
     body1: {
       fontWeight: 700,
-      textTransform: "uppercase"
+      textTransform: "uppercase",
+      fontSize: "36px",
     },
     body2: {
       textAlign: "center",
@@ -40,7 +42,7 @@ export const theme = createTheme({
       fontWeight: 600,
       textTransform: "uppercase"
     },
-    fontFamily: "Playfair Display",
-    fontSize: 24,
+    fontFamily: "'filosofia-all-small-caps', 'Playfair Display', serif;",
+    fontSize: 36,
   },
 });

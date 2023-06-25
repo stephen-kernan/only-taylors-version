@@ -4,17 +4,18 @@
   background-position: center;
   background-repeat: repeat;
   background-attachment: fixed;
-  height: 100vh;
+  height: min-content;
 }
 
 .pageContent {
-  margin-block: 8rem;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
 }
 
 .paragraphContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.5rem;
 }
 
 .paragraphText {
@@ -23,13 +24,14 @@
 }
 
 .primaryButton {
-  margin-left: 2px !important;
-  padding: 1rem 3rem !important;
+  /*margin-left: 2px !important;*/
+  padding: 0.5rem 1.5rem !important;
   border-radius: 0 !important;
-  font-size: 1em !important;
+  font-size: 1.75rem !important;
   font-weight: 900;
-  text-transform: none;
+  text-transform: capitalize;
   letter-spacing: 0.1rem;
+  background: url(https://cdn.shopify.com/s/files/1/0011/4651/9637/t/243/assets/snpib.png);
 }
 
 .footerContainer {

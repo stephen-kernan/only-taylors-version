@@ -4,6 +4,16 @@ import styles from "../styles/main.module.css";
 export const GlobalFooter = () => {
   return (
     <footer>
+      <div className={styles.disclaimer}>
+        <Typography
+          variant="body2"
+          component="p"
+          className={styles.footerContent}
+        >
+          *This application is fan-made and is in no way endorsed by Taylor
+          Swift or Spotify
+        </Typography>
+      </div>
       <div className={styles.footerContainer}>
         <Typography
           variant="body2"
@@ -29,15 +39,17 @@ export const GlobalFooter = () => {
             View Code
           </Link>
         </Typography>
-      </div>
-      <div className={styles.disclaimer}>
         <Typography
           variant="body2"
           component="p"
           className={styles.footerContent}
         >
-          *This application is fan-made and is in no way endorsed by Taylor
-          Swift or Spotify
+          <Link
+            target="_blank"
+            href="https://www.buymeacoffee.com/stephenkernan"
+          >
+            Support This Site
+          </Link>
         </Typography>
       </div>
     </footer>

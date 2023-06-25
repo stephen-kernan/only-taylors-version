@@ -12,6 +12,7 @@ export const GlobalHead = ({ title = "Only (Taylor's Version)" }) => {
           href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Sacramento&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
       />
+      <link rel="stylesheet" href="https://use.typekit.net/msl6gcw.css" />
     </Head>
   );
 };

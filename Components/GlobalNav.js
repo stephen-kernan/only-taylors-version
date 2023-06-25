@@ -1,13 +1,14 @@
 import { AppBar, Link, Toolbar, Typography } from "@mui/material";
+import {theme} from "../public/theme";
 
 export const GlobalNav = () => {
   return (
     <AppBar position="static" sx={{ boxShadow: "none" }}>
       <Toolbar
         sx={{
-          bgcolor: "primary.main",
-          paddingTop: "0.5em",
-          paddingBottom: "0.5em",
+          background: theme.palette.background.header,
+          paddingBlock: "2.75rem",
+          borderBottom: "1px solid white"
         }}
       >
         <Link href="/" sx={{ width: "100%" }}>
@@ -18,8 +19,6 @@ export const GlobalNav = () => {
               textAlign: "center",
               width: "100%",
               fontWeight: 700,
-              letterSpacing: "0.1rem",
-              color: "#BFBAC0",
             }}
           >
             Only (Taylor's Version)
