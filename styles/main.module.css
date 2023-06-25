@@ -9,11 +9,11 @@
 }
 
 .title {
-  font-size: 1.25rem;
+  font-size: 1.25rem !important;
 }
 
 .headers {
-  font-size: 1.1em;
+  font-size: 1.1em !important;
 }
 
 .pageContent {
@@ -65,18 +65,18 @@
 
 .footerContent {
   max-width: min(80ch, 90%);
-  font-size: 0.5em;
+  font-size: 0.5em !important;
   text-align: center;
 }
 
 
 @media (min-width: 768px) {
   .title {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
 
   .headers {
-    font-size: 1.25em;
+    font-size: 1.25em !important;
   }
 
   .paragraphText {
@@ -84,7 +84,7 @@
   }
 
   .footerContent {
-    font-size: 0.75em;
+    font-size: 0.75em !important;
   }
 
   .footerContainer {
