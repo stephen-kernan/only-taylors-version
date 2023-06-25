@@ -1,14 +1,23 @@
 .container {
   background-image: url("/background-image__ts-speak-now.webp") !important;
-  background-size: 5600px auto;
+  background-size: 5600px 100vw;
   background-position: center;
   background-repeat: repeat;
   background-attachment: fixed;
   height: min-content;
+  width: 100vw;
+}
+
+.title {
+  font-size: 1.25rem;
+}
+
+.headers {
+  font-size: 1.1em;
 }
 
 .pageContent {
-  margin-top: 8rem;
+  margin-top: 4rem;
   margin-bottom: 5rem;
 }
 
@@ -21,11 +30,11 @@
 .paragraphText {
   max-width: min(50ch, 90%);
   text-align: center;
+  font-size: 0.75em;
 }
 
 .primaryButton {
-  /*margin-left: 2px !important;*/
-  padding: 0.5rem 1.5rem !important;
+  padding: 0.25rem 1.5rem !important;
   border-radius: 0 !important;
   font-size: 1.75rem !important;
   font-weight: 900;
@@ -36,9 +45,12 @@
 
 .footerContainer {
   display: flex;
-  gap: 2em;
+  flex-flow: column;
+  font-weight: 400;
+  font-family: 'filosofia-all-small-caps', 'Playfair Display', serif;
+  gap: 2rem;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   padding-bottom: 1em;
   font-style: italic;
 }
@@ -53,4 +65,33 @@
 
 .footerContent {
   max-width: min(80ch, 90%);
+  font-size: 0.5em;
+  text-align: center;
+}
+
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .headers {
+    font-size: 1.25em;
+  }
+
+  .paragraphText {
+    font-size: 1em;
+  }
+
+  .footerContent {
+    font-size: 0.75em;
+  }
+
+  .footerContainer {
+    flex-flow: row;
+  }
+
+  .disclaimer {
+    padding-bottom: 2em;
+  }
 }

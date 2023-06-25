@@ -1,5 +1,6 @@
 import { AppBar, Link, Toolbar, Typography } from "@mui/material";
 import {theme} from "../public/theme";
+import styles from "/styles/main.module.css";
 
 export const GlobalNav = () => {
   return (
@@ -15,6 +16,7 @@ export const GlobalNav = () => {
           <Typography
             variant="h1"
             component="h1"
+            className={styles.title}
             sx={{
               textAlign: "center",
               width: "100%",

@@ -22,27 +22,21 @@ export const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: "2.25rem",
       fontFamily: "'mina', 'Sacramento', 'Mr De Haviland', sans-serif;",
       textTransform: "none",
       color: "#FFF"
     },
     h2: {
-      fontSize: "1.5em",
       fontWeight: 700,
     },
     body1: {
       fontWeight: 700,
-      textTransform: "uppercase",
-      fontSize: "36px",
     },
     body2: {
       textAlign: "center",
-      fontSize: "0.75em",
-      fontWeight: 600,
-      textTransform: "uppercase"
+      fontWeight: 500,
     },
     fontFamily: "'filosofia-all-small-caps', 'Playfair Display', serif;",
-    fontSize: 36,
+    fontSize: 36
   },
 });

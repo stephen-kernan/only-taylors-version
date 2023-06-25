@@ -57,6 +57,7 @@ export const Home = () => {
                   variant="h2"
                   component="h2"
                   textAlign="center"
+                  className={styles.headers}
                 >
                   No More Stolen Lullabies
                 </Typography>
