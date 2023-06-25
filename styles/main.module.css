@@ -13,7 +13,7 @@
 }
 
 .headers {
-  font-size: 1em !important;
+  font-size: 0.75em !important;
 }
 
 .pageContent {
@@ -30,7 +30,7 @@
 .paragraphText {
   max-width: min(50ch, 90%);
   text-align: center;
-  font-size: 0.75em !important;
+  font-size: 0.55em !important;
 }
 
 .primaryButton {
