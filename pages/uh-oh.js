@@ -1,5 +1,4 @@
 import {
-  CircularProgress,
   CssBaseline,
   Grid,
   ThemeProvider,
@@ -11,29 +10,24 @@ import { theme } from "../public/theme";
 import { GlobalHead } from "../Components/GlobalHead";
 import styles from "../styles/main.module.css";
 import { GlobalNav } from "../Components/GlobalNav";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { GlobalFooter } from "../Components/GlobalFooter";
 import { Mixpanel } from "../helpers/mixPanel";
+import {PrimaryButton} from "../Components/PrimaryButton";
 
-export const Converter = () => {
+
+export const UhOh = () => {
   const router = useRouter();
   const { tracks = 0, playlists = 0 } = router.query;
 
   useEffect(() => {
-    const [trackCount, playlistCount] = [Number(tracks), Number(playlists)]
-    if (trackCount > 0 || playlistCount > 0) {
-      Mixpanel.track("User completed process.", { trackCount, playlistCount });
+    Mixpanel.identify(localStorage.getItem("access_token"));
+    Mixpanel.track("User failed to update tracks");
+  }, []);
 
-      // User-level update stats
-      Mixpanel.identify(localStorage.getItem("access_token"));
-      if (trackCount > 0) {
-        Mixpanel.people.increment("tracksUpdated", trackCount);
-      }
-      if (playlistCount > 0) {
-        Mixpanel.people.increment("playlistsUpdated", playlistCount);
-      }
-    }
-  }, [router.isReady]);
+  const redirectToConfirmationPage = () => {
+    router.push("/confirmation")
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -48,7 +42,7 @@ export const Converter = () => {
           <div className={styles.pageContent}>
             <Grid container spacing={4} className={styles.pageContainer}>
               <Grid item xs={12} className={styles.paragraphContainer}>
-                <CheckCircleOutlineIcon fontSize="large" />
+                <ErrorOutlineIcon fontSize="large" />
               </Grid>
               <Grid item xs={12} className={styles.paragraphContainer}>
                 <Typography
@@ -56,13 +50,13 @@ export const Converter = () => {
                   component="p"
                   className={styles.paragraphText}
                 >
-                  Congrats! You just replaced {tracks > 0 ? tracks : "all"} songs across{" "}
-                  {playlists > 0 ? playlists : "all"} of your playlists with Taylor’s Version.
-                  Thank you for supporting Taylor's rightful ownership of her music.
-                  Long story short, we survived! Feel free to share this with
-                  other Swifties!
+                  It looks like something went wrong. Please try again!
                 </Typography>
               </Grid>
+              <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+                <PrimaryButton label="Try Again" fn={redirectToConfirmationPage} />
+              </Grid>
+
             </Grid>
           </div>
         </main>
@@ -73,4 +67,4 @@ export const Converter = () => {
   );
 };
 
-export default Converter;
+export default UhOh;

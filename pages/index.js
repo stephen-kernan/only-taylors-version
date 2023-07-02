@@ -19,8 +19,7 @@ export const Home = () => {
 
   useEffect(() => {
     const referrer = document.referrer;
-    console.log("referrer => ", referrer.split("?")[0]);
-    Mixpanel.track("Landing page");
+    Mixpanel.track("Landing page", { "referrer": referrer });
   }, []);
 
   useEffect(() => {
@@ -69,7 +68,7 @@ export const Home = () => {
                   className={styles.paragraphText}
                 >
                   We have created a way to replace all of the Taylor Swift
-                  original recordings in your Spotify playlists with Taylor’s
+                  original recordings in your Spotify library with Taylor’s
                   Version by simply clicking a button… Are you ready for it?
                 </Typography>
               </Grid>

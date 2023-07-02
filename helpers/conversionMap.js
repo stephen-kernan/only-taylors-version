@@ -1,4 +1,27 @@
 export const conversionMap = {
+  // ----------
+  // ALBUMS
+  // ----------
+  "2dqn5yOQWdyGwOpOIi9O4x": {
+    taylorsVersionId: "4hDok0OAJd57SGIT8xuWJH",
+    trackName: "Fearless (Standard Album)"
+  },
+  "43OpbkiiIxJO8ktIB777Nn": {
+    taylorsVersionId: "4hDok0OAJd57SGIT8xuWJH",
+    trackName: "Fearless (Platinum Version)"
+  },
+  "1EoDsNmgTLtmwe1BDAVxV5": {
+    taylorsVersionId: "6kZ42qRrzov54LcAk4onW9",
+    trackName: "Red (Standard Album)"
+  },
+  "1KlU96Hw9nlvqpBPlSqcTV": {
+    taylorsVersionId: "6kZ42qRrzov54LcAk4onW9",
+    trackName: "Red (Deluxe Edition)"
+  },
+
+  // ----------
+  // TRACKS
+  // ----------
   "786NsUYn4GGUf8AOt0SQhP": {
     taylorsVersionId: "6lzc0Al0zfZOIFsFvBS1ki",
     trackName: "State of Grace",
@@ -167,10 +190,6 @@ export const conversionMap = {
     taylorsVersionId: "2JoJrsEV15OzbijS47lids",
     trackName: "Today Was A Fairytale",
   },
-  "786NsUYn4GGUf8AOt0SQhP": {
-    taylorsVersionId: "6lzc0Al0zfZOIFsFvBS1ki",
-    trackName: "State of Grace",
-  },
   "0cITLOYn1Sv4q27zZPqlNK": {
     taylorsVersionId: "4OAuvHryIVv4kMDNSLuPt6",
     trackName: "Red",
@@ -294,7 +313,7 @@ export const conversionMap = {
 };
 
 const alternativeVersions = {
-  "1q3RiD1tIWUpGsNFADMlvl?si=16816a7894944a55": {
+  "1q3RiD1tIWUpGsNFADMlvl": {
     originalTrackName: "All Too Well",
     alernativeTrackName: "All Too Well (10 Minute Version)",
     alternativeTrackId: "",
