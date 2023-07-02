@@ -285,7 +285,7 @@ export const replaceWithTaylorsVersion = async (token) => {
       numberOfTracksUpdated += tracks
       numberOfPlaylistsUpdated += playlists
     })
-    
+
     return `/thank-you?tracks=${numberOfTracksUpdated}&playlists=${numberOfPlaylistsUpdated}`;
   } catch (err) {
     console.error(err);
