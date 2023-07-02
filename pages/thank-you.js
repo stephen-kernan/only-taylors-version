@@ -36,6 +36,7 @@ export const Converter = () => {
   useEffect(() => {
     Mixpanel.identify(localStorage.getItem("access_token"));
     Mixpanel.track("User successfully updated tracks", { tracks, playlists });
+    console.log(tracks, playlists)
     if (tracks > 0) {
       Mixpanel.people.increment("tracksUpdated", tracks);
     }
@@ -65,8 +66,8 @@ export const Converter = () => {
                   component="p"
                   className={styles.paragraphText}
                 >
-                  Congrats! You just replaced {tracks || "all"} songs in{" "}
-                  {playlists || "all"} of your playlists with Taylor’s Version.
+                  Congrats! You just replaced {tracks > 0 ? tracks : "all"} songs in{" "}
+                  {playlists > 0 ? playlists : "all"} of your playlists with Taylor’s Version.
                   Thank you for supporting Taylor's rightful ownership of her music.
                   Long story short, we survived! Feel free to share this with
                   other Swifties!
