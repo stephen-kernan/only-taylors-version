@@ -1,12 +1,4 @@
-.container {
-  background-image: url("/background-image__ts-speak-now.webp") !important;
-  background-size: 5600px auto;
-  background-position: center;
-  background-repeat: repeat;
-  background-attachment: fixed;
-  height: min-content;
-  width: 100vw;
-}
+
 
 .title {
   font-size: 1.25rem !important;

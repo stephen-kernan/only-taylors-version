@@ -1,3 +1,9 @@
 html {
     width: 100vw !important;
+    background-image: url("/background-image__ts-speak-now.webp") !important;
+    background-size: 5600px auto;
+    background-position: center;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
