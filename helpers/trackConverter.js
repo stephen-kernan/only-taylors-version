@@ -1,5 +1,5 @@
 import axios from "axios";
-import { conversionMap } from "./conversionMap";
+import {conversionMap} from "./conversionMap";
 
 const requestHeaders = (token) => ({
   Authorization: `Bearer ${token}`,
@@ -18,9 +18,9 @@ export const handleErrors = (err) => {
   }
 };
 
-export const fetchUserPlaylists = async (token) => {
+export const fetchUserPlaylists = async (token, userID) => {
   const [playlists, total] = await axios
-    .get("https://api.spotify.com/v1/me/playlists", {
+    .get(`https://api.spotify.com/v1/users/${userID}/playlists`, {
       headers: requestHeaders(token),
     })
     .then(({ data }) => {
@@ -30,7 +30,7 @@ export const fetchUserPlaylists = async (token) => {
   while (playlists.length < total) {
     await axios
       .get(
-        `https://api.spotify.com/v1/me/playlists?offset=${
+        `https://api.spotify.com/v1/users/${userID}/playlists?offset=${
           playlists.length - 1
         }`,
         {
@@ -47,6 +47,16 @@ export const fetchUserPlaylists = async (token) => {
 
   return playlists;
 };
+
+export const fetchCurrentUserID = async (token) => {
+  return await axios
+    .get("https://api.spotify.com/v1/me", {
+      headers: requestHeaders(token)
+    })
+    .then(({data}) => {
+      return data.id
+    })
+}
 
 export const fetchTracksInPlaylist = async (token, url, total) => {
   const tracksInPlaylist = [];
@@ -138,45 +148,68 @@ export const findOldVersionsInPlaylist = async (tracksInPlaylist = []) => {
   return [tracksToReplace, tracksToAdd];
 };
 
+
+export const replaceTracksInPlaylist = async (token, playlist) => {
+  let numberOfTracksUpdated = 0;
+
+  const tracksInPlaylist = await fetchTracksInPlaylist(
+    token,
+    playlist.tracks.href,
+    playlist.tracks.total
+  );
+
+  const [tracksToReplace, tracksToAdd] = await findOldVersionsInPlaylist(
+    tracksInPlaylist
+  );
+
+  if (!tracksToReplace.length) {
+    return [0, 0]
+  }
+
+  await deleteTracksInPlaylist(
+    token,
+    playlist.id,
+    tracksToReplace.length,
+    tracksToReplace
+  );
+
+  await addTracksToPlaylist(
+    token,
+    playlist.id,
+    tracksToAdd.length,
+    tracksToAdd
+  );
+
+  if (tracksToReplace.length) {
+    numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length;
+  }
+
+  return [numberOfTracksUpdated, 1]
+}
+
 export const replaceWithTaylorsVersion = async (token) => {
   try {
-    const playlists = await fetchUserPlaylists(token);
+    const userID = await fetchCurrentUserID(token)
+    const playlists = await fetchUserPlaylists(token, userID);
+
     let numberOfTracksUpdated = 0;
     let numberOfPlaylistsUpdated = 0;
 
+    const calls = []
     for (const playlist of playlists) {
       if (playlist.tracks.total === 0) {
-        return;
+        continue;
       }
 
-      const tracksInPlaylist = await fetchTracksInPlaylist(
-        token,
-        playlist.tracks.href,
-        playlist.tracks.total
-      );
-      const [tracksToReplace, tracksToAdd] = await findOldVersionsInPlaylist(
-        tracksInPlaylist
-      );
-
-      await deleteTracksInPlaylist(
-        token,
-        playlist.id,
-        tracksToReplace.length,
-        tracksToReplace
-      );
-
-      await addTracksToPlaylist(
-        token,
-        playlist.id,
-        tracksToAdd.length,
-        tracksToAdd
-      );
-
-      if (tracksToReplace.length) {
-        numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length;
-        numberOfPlaylistsUpdated = numberOfPlaylistsUpdated + 1;
-      }
+      calls.push(replaceTracksInPlaylist(token, playlist))
     }
+
+    const responses = await Promise.all(calls)
+    responses.map(([tracks, playlists]) => {
+      numberOfTracksUpdated += tracks
+      numberOfPlaylistsUpdated += playlists
+    })
+    console.log(`Done => ${numberOfTracksUpdated} Tracks & ${numberOfPlaylistsUpdated} Playlists`)
 
     let queryString = `${
       numberOfTracksUpdated ? `tracks=${numberOfTracksUpdated}&` : ""
