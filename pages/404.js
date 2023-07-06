@@ -16,16 +16,15 @@ import { Mixpanel } from "../helpers/mixPanel";
 import {PrimaryButton} from "../Components/PrimaryButton";
 
 
-export const UhOh = () => {
+export const UnknownPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    Mixpanel.identify(localStorage.getItem("access_token"));
-    Mixpanel.track("User failed to update tracks");
+    Mixpanel.track("Landed on an unknown page");
   }, []);
 
-  const redirectToConfirmationPage = () => {
-    router.push("/confirmation")
+  const redirectToHomePage = () => {
+    router.push("/")
   }
 
   return (
@@ -49,9 +48,9 @@ export const UhOh = () => {
                   component="p"
                   className={styles.paragraphText}
                 >
-                  Sorry! Our page got stuck in a lavender haze!
+                  It looks like we got lost in translation!
                   <br/>
-                  Please click the button below to try again.
+                  We couldn't find the page you're looking for. Click the button below to go back to our landing page.
                 </Typography>
                 <Typography
                   variant="body1"
@@ -61,7 +60,7 @@ export const UhOh = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-                <PrimaryButton label="Begin Again" fn={redirectToConfirmationPage} />
+                <PrimaryButton label="Take Me Home" fn={redirectToHomePage} />
               </Grid>
 
             </Grid>
@@ -74,4 +73,4 @@ export const UhOh = () => {
   );
 };
 
-export default UhOh;
+export default UnknownPage;

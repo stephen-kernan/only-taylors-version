@@ -27,8 +27,7 @@ export const LoadingResults = () => {
         </Grid>
         <Grid item xs={12} className={styles.paragraphContainer}>
           <Typography variant="p" component="p" className={styles.paragraphText}>
-            UPDATING PLAYLISTS <br /> PLEASE DON'T REFRESH, THIS COULD TAKE A
-            MINUTE
+            Are we in the clear yet? <br /> Please wait, this can take a minute. Your updated playlists are enchanted to meet you!
           </Typography>
         </Grid>
       </Grid>
