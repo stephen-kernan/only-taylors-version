@@ -2,7 +2,7 @@ const mixpanelKey = process.env.NEXT_PUBLIC_MIXPANEL_CLIENT_KEY;
 const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 
 import mixpanel from "mixpanel-browser";
-mixpanel.init(mixpanelKey);
+mixpanel.init(mixpanelKey, { track_pageview: true, persistence: 'localStorage' });
 
 const actions = {
   identify: (id) => {
