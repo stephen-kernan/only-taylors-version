@@ -25,7 +25,11 @@ export const Converter = () => {
       Mixpanel.track("User completed process.", { trackCount, playlistCount });
 
       // User-level update stats
-      Mixpanel.identify(localStorage.getItem("access_token"));
+      const userIdentifier = localStorage.getItem("access_token")
+        ? localStorage.getItem("access_token").slice(0, 20)
+        : ""
+      Mixpanel.identify(userIdentifier);
+
       if (trackCount > 0) {
         Mixpanel.people.increment("tracksUpdated", trackCount);
       }

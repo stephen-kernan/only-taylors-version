@@ -20,7 +20,11 @@ export const UhOh = () => {
   const router = useRouter();
 
   useEffect(() => {
-    Mixpanel.identify(localStorage.getItem("access_token"));
+    const userIdentifier = localStorage.getItem("access_token")
+      ? localStorage.getItem("access_token").slice(0, 20)
+      : ""
+
+    Mixpanel.identify(userIdentifier);
     Mixpanel.track("User failed to update tracks");
   }, []);
 

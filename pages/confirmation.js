@@ -1,6 +1,7 @@
 import {
+  Checkbox,
   CircularProgress,
-  CssBaseline,
+  CssBaseline, FormControlLabel,
   Grid,
   ThemeProvider,
   Typography,
@@ -36,6 +37,13 @@ export const LoadingResults = () => {
 };
 
 export const ConfirmationContent = ({ confirmChoice }) => {
+  const [useTenMinuteVersion, setUseTenMinuteVersion] = useState(false)
+
+  const toggleTenMinute = () => {
+    setUseTenMinuteVersion(!useTenMinuteVersion)
+    console.log(useTenMinuteVersion)
+  }
+
   return (
     <div className={styles.pageContent}>
       <Grid container spacing={4} className={styles.pageContainer}>
@@ -60,9 +68,27 @@ export const ConfirmationContent = ({ confirmChoice }) => {
             reverse it. No need to cry like a baby coming home from the bar, just
             click the button below!
           </Typography>
+          <Typography
+            variant="body1"
+            component="p"
+            className={styles.paragraphText}
+          >
+          </Typography>
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-          <PrimaryButton label="Replace Tracks" fn={confirmChoice} />
+          <PrimaryButton label="Replace Tracks" fn={() => confirmChoice(useTenMinuteVersion)} />
+          <br />
+        </Grid>
+        <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+          <FormControlLabel
+            label="Use All Too Well (10 Minute Version)?"
+            onClick={toggleTenMinute}
+            checked={useTenMinuteVersion}
+            className={styles.formLabel}
+            control={
+              <Checkbox />
+            }
+          />
         </Grid>
       </Grid>
     </div>
@@ -88,11 +114,11 @@ export const Confirmation = () => {
     setToken(storedToken);
   });
 
-  const confirmChoice = async () => {
-    Mixpanel.track("User clicked confirm");
+  const confirmChoice = async (tenMinuteVersion = false) => {
+    Mixpanel.track("User clicked confirm", { tenMinuteVersion });
     setLoading(true);
     if (token) {
-      const url = await replaceWithTaylorsVersion(token);
+      const url = await replaceWithTaylorsVersion(token, tenMinuteVersion);
       if (url) {
         window.location = url;
       }
