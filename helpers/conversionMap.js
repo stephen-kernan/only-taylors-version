@@ -22,10 +22,8 @@ export const conversionMap = {
   // ----------
   // TRACKS
   // ----------
-  "786NsUYn4GGUf8AOt0SQhP": {
-    taylorsVersionId: "6lzc0Al0zfZOIFsFvBS1ki",
-    trackName: "State of Grace",
-  },
+
+  // Red (Deluxe)
   "5zyCYmiaVE5y26EZuwZbsw": {
     taylorsVersionId: "6lzc0Al0zfZOIFsFvBS1ki",
     trackName: "State of Grace",
@@ -110,6 +108,8 @@ export const conversionMap = {
     taylorsVersionId: "7nWui6jiMM2m9qFmET1Mtj",
     trackName: "Ronan	",
   },
+
+  // Fearless (Deluxe)
   "6Eu31gddWw0gOGO506pJYA": {
     taylorsVersionId: "77sMIMlNaSURUAXq5coCxE",
     trackName: "Fearless",
@@ -190,6 +190,12 @@ export const conversionMap = {
     taylorsVersionId: "2JoJrsEV15OzbijS47lids",
     trackName: "Today Was A Fairytale",
   },
+
+  // Red (Standard)
+  "786NsUYn4GGUf8AOt0SQhP": {
+    taylorsVersionId: "6lzc0Al0zfZOIFsFvBS1ki",
+    trackName: "State of Grace",
+  },
   "0cITLOYn1Sv4q27zZPqlNK": {
     taylorsVersionId: "4OAuvHryIVv4kMDNSLuPt6",
     trackName: "Red",
@@ -250,18 +256,8 @@ export const conversionMap = {
     taylorsVersionId: "05GsNucq8Bngd9fnd4fRa0",
     trackName: "Begin Again",
   },
-  "47HtKpfzpAt8rQjjXWotFj": {
-    taylorsVersionId: "1msEuwSBneBKpVCZQcFTsU",
-    trackName: "Forever & Always",
-  },
-  "3esA216TyLHEkNiBCeCmcg": {
-    taylorsVersionId: "6ON9UuIq49xXY9GPmHIYRp",
-    trackName: "The Best Day",
-  },
-  "1yACRKAwlXWhXXFUSkvzhD": {
-    taylorsVersionId: "3ExweHKZF9B752DPQByRVT",
-    trackName: "Change",
-  },
+
+  // Fearless (Standard)
   "3F6czr26ZwGU5O5CHY04Ma": {
     taylorsVersionId: "77sMIMlNaSURUAXq5coCxE",
     trackName: "Fearless",
@@ -302,6 +298,59 @@ export const conversionMap = {
     taylorsVersionId: "22bPsP2jCgbLUvh82U0Z3M",
     trackName: "The Way I Loved You",
   },
+  "47HtKpfzpAt8rQjjXWotFj": {
+    taylorsVersionId: "1msEuwSBneBKpVCZQcFTsU",
+    trackName: "Forever & Always",
+  },
+  "3esA216TyLHEkNiBCeCmcg": {
+    taylorsVersionId: "6ON9UuIq49xXY9GPmHIYRp",
+    trackName: "The Best Day",
+  },
+  "1yACRKAwlXWhXXFUSkvzhD": {
+    taylorsVersionId: "3ExweHKZF9B752DPQByRVT",
+    trackName: "Change",
+  },
+
+  // Speak Now (Standard)
+  "0dBW6ZsW8skfvoRfgeerBF" : { trackName: "Mine", taylorsVersionId: "7G0gBu6nLdhFDPRLc0HdDG" },
+  "6d9IiDcFxtFVIvt9pCqyGH" : { trackName: "Sparks Fly", taylorsVersionId: "3MytWN8L7shNYzGl4tAKRp" },
+  "3DrjZArsPsoqbLzUZZV1Id" : { trackName: "Back to December", taylorsVersionId: "79uDOz0zuuWS7HWxzMmTa2" },
+  "24DefNCFiWTP8OjYWiXuYe" : { trackName: "Speak Now", taylorsVersionId: "5xXqyjLicvEpch72qEryFT" },
+  "7hZuICN5eaCuQyp443RCt6" : { trackName: "Dear John", taylorsVersionId: "1zU8j1x3yi9xalMF96pzKp" },
+  "5yEPktRqvIhko5QFF3aBhQ" : { trackName: "Mean", taylorsVersionId: "30Y4CV7A6YqtQtTTo7Ue4j" },
+  "3RBluWmSoG2pGA1OePzGJI" : { trackName: "The Story of Us", taylorsVersionId: "6dTA6y0C2ReQklntzZl8l3" },
+  "1wJL1A0QUHJPf2cm7tsrdw" : { trackName: "Never Grow Up", taylorsVersionId: "2EFZ9emtKWEglWUQGEQ3P9" },
+  "10eBRyImhfqVvkiVEGf0N0" : { trackName: "Enchanted", taylorsVersionId: "3sW3oSbzsfecv9XoUdGs7h" },
+  "2ythurkTtSiyfK7GprJoFW" : { trackName: "Better Than Revenge", taylorsVersionId: "0NwGC0v03ysCYINtg6ns58" },
+  "5GPwN5iZ9ZMSXAkppj4Uvv" : { trackName: "Innocent", taylorsVersionId: "12nBPF4Rh4XLFJV0YLN7uj" },
+  "28M2gifMU282QBM3fKajIS" : { trackName: "Haunted", taylorsVersionId: "4tMzIAFTFdqGBQLdfbPces" },
+  "4h0EXpatqJImv4VRgvX6po" : { trackName: "Last Kiss", taylorsVersionId: "59KOoHFcw5XfICnO57holu" },
+  "6XDBA3QWX51lDJ0oZbaJJN" : { trackName: "Long Live", taylorsVersionId: "4hqJ4bSlYJOXb6Z4SRmzxs" },
+
+
+  // Speak Now (Deluxe)
+  "6LZaxlycSWrJZ4Volb25qx": { trackName: "Mine", taylorsVersionId: "7G0gBu6nLdhFDPRLc0HdDG" },
+  "1q8E1FfFuhd12c5JcJwPxQ": { trackName: "Sparks Fly", taylorsVersionId: "3MytWN8L7shNYzGl4tAKRp" },
+  "7lxADouiWFkwR7ZV2GKUcH": { trackName: "Back to December", taylorsVersionId: "79uDOz0zuuWS7HWxzMmTa2" },
+  "1nYWTzy5zu3zEPNgB1sItW": { trackName: "Speak Now", taylorsVersionId: "5xXqyjLicvEpch72qEryFT" },
+  "1ubvV5ECkm6nSI6g1HmbBK": { trackName: "Dear John", taylorsVersionId: "1zU8j1x3yi9xalMF96pzKp" },
+  "4N60XfcTE1ysLZGbYgnYXq": { trackName: "Mean", taylorsVersionId: "30Y4CV7A6YqtQtTTo7Ue4j" },
+  "19tHCfzUSoy5HkpxcmbA0A": { trackName: "The Story of Us", taylorsVersionId: "6dTA6y0C2ReQklntzZl8l3" },
+  "74WBGgUnpKrJXt6TETfR6Z": { trackName: "Never Grow Up", taylorsVersionId: "2EFZ9emtKWEglWUQGEQ3P9" },
+  "14LtANuaslKWyYbktUrHBU": { trackName: "Enchanted", taylorsVersionId: "3sW3oSbzsfecv9XoUdGs7h" },
+  "1By2VQkUN0Frd8mKNV5NYC": { trackName: "Better Than Revenge", taylorsVersionId: "0NwGC0v03ysCYINtg6ns58" },
+  "3kfgJql90tzgoxByioAMXR": { trackName: "Innocent", taylorsVersionId: "12nBPF4Rh4XLFJV0YLN7uj" },
+  "11UaQaEp2LvdspTyyuE3ur": { trackName: "Haunted", taylorsVersionId: "4tMzIAFTFdqGBQLdfbPces" },
+  "1D27z8xNzjW0Mwwt1NCWhJ": { trackName: "Last Kiss", taylorsVersionId: "59KOoHFcw5XfICnO57holu" },
+  "7DjCRhhFo9PPzca1BjMLcf": { trackName: "Long Live", taylorsVersionId: "4hqJ4bSlYJOXb6Z4SRmzxs" },
+  "1EQn3Uc5AyUXoiPLeyCrrg": { trackName: "Ours", taylorsVersionId: "3yNJkriPzWjkkDAWHIAVUq" },
+  "2R7C9dDqv1UPycvepBFziA": { trackName: "Superman", taylorsVersionId: "4evLyY5Ue1Wesc61t2KXAU" },
+
+  // Weird Ones and Singles
+  "3oKMl2tJv4fdidkXUYMI5x": {
+    taylorsVersionId: "4d1CG5ei1E2vGbvmgf5KKv",
+    trackName: "This Love",
+  },
   "1kTPQnabROVkW9bUXdCGrB": {
     taylorsVersionId: "4d1CG5ei1E2vGbvmgf5KKv",
     trackName: "This Love",
@@ -310,12 +359,20 @@ export const conversionMap = {
     taylorsVersionId: "1Ov37jtRQ2YNAe8HzfczkL",
     trackName: "Wildest Dreams",
   },
+  "106R7Z57WYzBAfrXImV30y": {
+    taylorsVersionId: "1Ov37jtRQ2YNAe8HzfczkL",
+    trackName: "Wildest Dreams",
+  },
+  "0vvt4IZOMkRug195S4MUq0": {
+    taylorsVersionId: "0kAZ3H6G9Zac4PMpmobMkj",
+    trackName: "If This Was a Movie",
+  }
 };
 
-const alternativeVersions = {
+export const alternativeVersions = {
   "1q3RiD1tIWUpGsNFADMlvl": {
     originalTrackName: "All Too Well",
     alernativeTrackName: "All Too Well (10 Minute Version)",
-    alternativeTrackId: "",
+    taylorsVersionId: "5enxwA8aAbwZbf5qCHORXi",
   },
 };

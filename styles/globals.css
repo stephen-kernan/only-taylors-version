@@ -7,3 +7,28 @@ html {
     background-attachment: fixed;
     overflow-x: hidden;
 }
+
+
+
+.MuiCheckbox-root > svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+
+.MuiFormControlLabel-label {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .MuiCheckbox-root > svg {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .MuiFormControlLabel-label {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+}
+

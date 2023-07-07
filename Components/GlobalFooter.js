@@ -54,7 +54,7 @@ export const GlobalFooter = () => {
             target="_blank"
             href="https://www.buymeacoffee.com/stephenkernan"
           >
-            Support This Site
+            Help Pay My Student Loans
           </SmartLink>
         </Typography>
       </div>

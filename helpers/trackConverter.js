@@ -1,5 +1,5 @@
 import axios from "axios";
-import {conversionMap} from "./conversionMap";
+import {alternativeVersions, conversionMap} from "./conversionMap";
 
 const requestHeaders = (token) => ({
   Authorization: `Bearer ${token}`,
@@ -212,21 +212,29 @@ export const removeUserSavedAlbums = async (
 
 };
 
-export const findOldTracks = async (tracksInPlaylist = [], idsOnly = false) => {
+export const findOldTracks = async (tracksInPlaylist = [], idsOnly = false, tenMinuteVersion) => {
   const tracksToReplace = [];
   const tracksToAdd = [];
 
   for (const track of tracksInPlaylist) {
-    if (conversionMap[track?.track?.id]) {
+    const oldTrackId = track?.track?.id
+    const trackIsAllTooWell = oldTrackId === '1q3RiD1tIWUpGsNFADMlvl'
+    if (conversionMap[oldTrackId]) {
+      const newTrackId = (trackIsAllTooWell && tenMinuteVersion)
+        ? alternativeVersions[oldTrackId].taylorsVersionId
+        : conversionMap[oldTrackId].taylorsVersionId
+      if (tenMinuteVersion && trackIsAllTooWell) {
+        console.log("YES TAYLOR => ", newTrackId)
+      }
       if (idsOnly) {
-        tracksToReplace.push(track.track.id)
-        tracksToAdd.push(conversionMap[track.track.id].taylorsVersionId)
+        tracksToReplace.push(oldTrackId)
+        tracksToAdd.push(newTrackId)
       } else {
         tracksToReplace.push({
-          uri: `spotify:track:${track.track.id}`,
+          uri: `spotify:track:${oldTrackId}`,
         });
         tracksToAdd.push(
-          `spotify:track:${conversionMap[track.track.id].taylorsVersionId}`
+          `spotify:track:${newTrackId}`
         );
       }
     }
@@ -251,7 +259,7 @@ export const findOldAlbums = async (albums = []) => {
   return [albumsToReplace, albumsToAdd, totalTracksToReplace]
 }
 
-export const replaceUserSavedTracks = async (token) => {
+export const replaceUserSavedTracks = async (token, tenMinuteVersion) => {
   const userSavedTracks = []
   await axios.get(
     "https://api.spotify.com/v1/me/tracks",
@@ -261,7 +269,7 @@ export const replaceUserSavedTracks = async (token) => {
   })
 
   const [tracksToReplace, tracksToAdd] = await findOldTracks(
-    userSavedTracks, true
+    userSavedTracks, true, tenMinuteVersion
   )
 
   await saveUserTracks(token, tracksToAdd.length, tracksToAdd)
@@ -291,7 +299,7 @@ export const replaceUserSavedAlbums = async (token) => {
   return [totalTracksReplaced, 0]
 }
 
-export const replaceTracksInPlaylist = async (token, playlist) => {
+export const replaceTracksInPlaylist = async (token, playlist, tenMinuteVersion) => {
   let numberOfTracksUpdated = 0;
 
   const tracksInPlaylist = await fetchTracksInPlaylist(
@@ -301,7 +309,9 @@ export const replaceTracksInPlaylist = async (token, playlist) => {
   );
 
   const [tracksToReplace, tracksToAdd] = await findOldTracks(
-    tracksInPlaylist
+    tracksInPlaylist,
+    false,
+    tenMinuteVersion
   );
 
   if (!tracksToReplace.length) {
@@ -329,7 +339,7 @@ export const replaceTracksInPlaylist = async (token, playlist) => {
   return [numberOfTracksUpdated, 1]
 }
 
-export const replaceWithTaylorsVersion = async (token) => {
+export const replaceWithTaylorsVersion = async (token, tenMinuteVersion) => {
   try {
     const userID = await fetchCurrentUserID(token)
     const playlists = await fetchUserPlaylists(token, userID);
@@ -344,15 +354,15 @@ export const replaceWithTaylorsVersion = async (token) => {
         continue;
       }
 
-      apiCalls.push(replaceTracksInPlaylist(token, playlist))
+      apiCalls.push(replaceTracksInPlaylist(token, playlist, tenMinuteVersion))
     }
 
     // Wait until all API calls are returned so we have the number of tracks
     const responses = await Promise.all(
       [
         ...apiCalls,
-        replaceUserSavedTracks(token),
-        replaceUserSavedAlbums(token)
+        replaceUserSavedTracks(token, tenMinuteVersion),
+        replaceUserSavedAlbums(token, tenMinuteVersion)
       ]
     )
 
