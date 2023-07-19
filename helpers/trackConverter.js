@@ -81,7 +81,7 @@ export const addTracksToPlaylist = async (
   trackIds
 ) => {
   if (!trackIds || !trackIds.length) {
-    return [];
+    return;
   }
   for (let i = 0; i <= total; i += 100) {
     // i through i + 99 = 100 items. number 100 will be hit on next round

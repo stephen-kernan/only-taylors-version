@@ -31,4 +31,31 @@ describe('TrackConverterV2',  () => {
             expect(response).toBe(expected)
         })
     })
+
+    describe('replaceTracksInPlaylist()', () => {
+        jest.spyOn(originalFunctions, 'fetchTracksInPlaylist').mockReturnValue([])
+        jest.spyOn(originalFunctions, 'deleteTracksInPlaylist')
+        jest.spyOn(originalFunctions, 'addTracksToPlaylist')
+        const findOldTracksSpy = jest.spyOn(originalFunctions, 'findOldTracks').mockReturnValue([[],[]])
+
+
+        it('If tracks replaced, returns number of tracks and playlists updated', async () => {
+            findOldTracksSpy.mockReturnValue([[76,66],[12]])
+            const converter = new TrackConverterV2('', false)
+
+            const response = await converter.replaceTracksInPlaylist({tracks:{href:0,total:0}})
+            const expected =  [2,1]
+            expect(response).toEqual(expected)
+        })
+
+        it('If not tracks to replace, returns 0 and 0', async () => {
+            findOldTracksSpy.mockReturnValue([[],[]])
+            const converter = new TrackConverterV2('', false)
+
+            const response = await converter.replaceTracksInPlaylist({tracks:{href:0,total:0}})
+            const expected =  [0,0]
+            expect(response).toEqual(expected)
+        })
+    })
+
 })
