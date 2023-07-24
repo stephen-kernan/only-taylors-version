@@ -1,6 +1,8 @@
 import {
-    fetchCurrentUserID,
-    fetchUserPlaylists,
+    addTracksToPlaylist,
+    deleteTracksInPlaylist,
+    fetchCurrentUserID, fetchTracksInPlaylist,
+    fetchUserPlaylists, findOldTracks,
     replaceTracksInPlaylist,
     replaceUserSavedAlbums,
     replaceUserSavedTracks
@@ -52,4 +54,46 @@ export class TrackConverterV2 {
             return `/uh-oh`;
         }
     };
+    async replaceTracksInPlaylist(playlist) {
+        let numberOfTracksUpdated = 0;
+
+        const tracksInPlaylist = await fetchTracksInPlaylist(
+            this.token,
+            playlist.tracks.href,
+            playlist.tracks.total
+        );
+
+        const [tracksToReplace, tracksToAdd] = await findOldTracks(
+            tracksInPlaylist,
+            false,
+            this.tenMinuteVersion
+        );
+
+        if (!tracksToReplace.length) {
+            return [0, 0]
+        }
+
+        await deleteTracksInPlaylist(
+            this.token,
+            playlist.id,
+            tracksToReplace.length,
+            tracksToReplace
+        );
+
+        await addTracksToPlaylist(
+            this.token,
+            playlist.id,
+            tracksToAdd.length,
+            tracksToAdd
+        );
+
+        if (tracksToReplace.length) {
+            numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length;
+        }
+
+        return [numberOfTracksUpdated, 1]
+    }
+
+
 }
+
