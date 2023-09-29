@@ -13,7 +13,7 @@ export const GlobalHead = ({ title = "Only (Taylor's Version)" }) => {
           rel="stylesheet"
           crossOrigin="true"
       />
-      <link rel="stylesheet" href="https://use.typekit.net/msl6gcw.css" crossOrigin="true" />
+      <link rel="stylesheet" href="https://use.typekit.net/msl6gcw.css" crossOrigin="true"/>
     </Head>
   );
 };

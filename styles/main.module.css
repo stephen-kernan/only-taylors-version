@@ -28,18 +28,25 @@
 .primaryButton {
   padding: 0.25rem 1.5rem !important;
   border-radius: 0 !important;
-  font-size: 1.75rem !important;
+  font-size: 1.25rem !important;
   font-weight: 900;
-  text-transform: capitalize;
+  text-transform: capitalize !important;
   letter-spacing: 0.1rem;
-  background: url(https://cdn.shopify.com/s/files/1/0011/4651/9637/t/243/assets/snpib.png);
+  background: url(../public/1989-header-bg.webp);
+  border: 2px solid #555353 !important;
+  box-shadow: none !important;
+}
+
+.primaryButton:hover {
+  box-shadow: none !important;
+  border: 3px solid #555353 !important;
 }
 
 .footerContainer {
   display: flex;
   flex-flow: column;
   font-weight: 400;
-  font-family: 'filosofia-all-small-caps', 'Playfair Display', serif;
+  font-family: var(--text-font);
   gap: 2rem;
   justify-content: center;
   align-items: center;
@@ -57,7 +64,7 @@
 
 .footerContent {
   max-width: min(80ch, 90%);
-  font-size: 0.5em !important;
+  font-size: 0.75rem !important;
   text-align: center;
 }
 
@@ -76,7 +83,7 @@
   }
 
   .footerContent {
-    font-size: 0.75em !important;
+    font-size: 1.25rem !important;
   }
 
   .footerContainer {

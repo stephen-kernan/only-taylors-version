@@ -8,11 +8,11 @@ export const GlobalNav = () => {
       <Toolbar
         sx={{
           background: theme.palette.background.header,
-          paddingBlock: "2.75rem",
-          borderBottom: "1px solid white"
+          paddingBlock: "2rem",
+          borderBottom: "2px solid #555353"
         }}
       >
-        <Link href="/" sx={{ width: "100%" }}>
+        <Link href="/" sx={{ width: "100%", textDecoration: "none" }}>
           <Typography
             variant="h1"
             component="h1"
@@ -23,7 +23,7 @@ export const GlobalNav = () => {
               fontWeight: 700,
             }}
           >
-            Only (Taylor's Version)
+            ONLY (TAYLOR'S VERSION)
           </Typography>
         </Link>
       </Toolbar>

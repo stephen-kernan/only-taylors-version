@@ -21,9 +21,9 @@ import styles from "../styles/main.module.css";
 
 export const LoadingResults = () => {
   return (
-    <div className={styles.pageContent}>
+    <div>
       <Grid container spacing={4} className={styles.pageContent}>
-        <Grid item xs={12} sx={{marginTop: "10rem"}} className={styles.paragraphContainer}>
+        <Grid item xs={12} sx={{marginTop: "5rem"}} className={styles.paragraphContainer}>
           <CircularProgress />
         </Grid>
         <Grid item xs={12} className={styles.paragraphContainer}>

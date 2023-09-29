@@ -1,6 +1,11 @@
+:root {
+    --header-font: "ff-providence-sans-web-pro", sans-serif;
+    --text-font: "trade-gothic-next", sans-serif;
+}
+
 html {
     width: 100vw !important;
-    background-image: url("/background-image__ts-speak-now.webp") !important;
+    background-image: url("/1989-body-bg.webp") !important;
     background-size: 5600px auto;
     background-position: center;
     background-repeat: repeat;
@@ -8,15 +13,13 @@ html {
     overflow-x: hidden;
 }
 
-
-
 .MuiCheckbox-root > svg {
     width: 1.25rem !important;
     height: 1.25rem !important;
 }
 
 .MuiFormControlLabel-label {
-    font-size: 1.25rem;
+    font-size: 1rem !important;
     margin-bottom: 0.25rem;
 }
 
@@ -27,8 +30,7 @@ html {
     }
 
     .MuiFormControlLabel-label {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.25rem !important;
     }
 }
 

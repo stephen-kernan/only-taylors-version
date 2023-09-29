@@ -1,30 +1,33 @@
 import { createTheme } from "@mui/material";
+const headerFont = '"ff-providence-sans-web-pro", sans-serif;'
+const textFont = '"trade-gothic-next", sans-serif;'
 
 export const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#1F1025",
-      contrastText: "#FFF",
+      main: "#555353",
+      contrastText: "#555353",
     },
     secondary: {
-      main: "#502B5D",
+      main: "#555353",
     },
     text: {
-      header: "#2a153d",
-      primary: "#2a153d",
+      header: "#555353",
+      primary: "#555353",
     },
     background: {
-      paper: "url(/background-image__ts-speak-now.webp)",
-      header: "url(https://cdn.shopify.com/s/files/1/0011/4651/9637/t/243/assets/snpib.png)",
-      default: "url(/background-image__ts-speak-now.webp)",
+      paper: "url(/1989-body-bg.webp)",
+      header: "url(/1989-header-bg.webp)",
+      default: "url(/1989-body-bg.webp)",
     },
   },
   typography: {
+    fontFamily: "var(--text-font)",
+    fontSize: 24,
     h1: {
-      fontFamily: "'mina', 'Sacramento', 'Mr De Haviland', sans-serif;",
-      textTransform: "none",
-      color: "#FFF"
+      fontFamily: "var(--header-font)",
+      color: "#555353"
     },
     h2: {
       fontWeight: 700,
@@ -36,7 +39,5 @@ export const theme = createTheme({
       textAlign: "center",
       fontWeight: 500,
     },
-    fontFamily: "'filosofia-all-small-caps', 'Playfair Display', serif;",
-    fontSize: 36
   },
 });
