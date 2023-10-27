@@ -396,7 +396,7 @@ export const conversionMap = {
   "6rZVy6FIG7lSJQMFXHo12z": { trackName: "New Romantics", taylorsVersionId: "2vPMoMDXxu9uX1igWZmXSG" },
 
   // Weird Ones and Singles
-  "6xsEAm6w9oMQYYg3jkEkMT": { trackName: "Bad Blood ft Kendrick Lamar", taylorsVersionId: "" },
+  "6xsEAm6w9oMQYYg3jkEkMT": { trackName: "Bad Blood ft Kendrick Lamar", taylorsVersionId: "6qAcApH8obo8eqatCKUHd9" },
   "0vvt4IZOMkRug195S4MUq0": {
     taylorsVersionId: "0kAZ3H6G9Zac4PMpmobMkj",
     trackName: "If This Was a Movie",
