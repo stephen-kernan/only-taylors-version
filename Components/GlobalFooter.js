@@ -30,7 +30,7 @@ export const GlobalFooter = () => {
             target="_blank"
             href="https://www.npr.org/2019/08/22/753393630/look-what-they-made-her-do-taylor-swift-to-re-record-her-catalog"
           >
-            Why is Taylor re-recording?
+            Why is Taylor Re-recording?
           </SmartLink>
         </Typography>
         <Typography

@@ -354,23 +354,41 @@ export const conversionMap = {
   "1EQn3Uc5AyUXoiPLeyCrrg": { trackName: "Ours", taylorsVersionId: "3yNJkriPzWjkkDAWHIAVUq" },
   "2R7C9dDqv1UPycvepBFziA": { trackName: "Superman", taylorsVersionId: "4evLyY5Ue1Wesc61t2KXAU" },
 
+  // 1989 (Standard Edition)
+  "6qnM0XXPZOINWA778uNqQ9": { trackName: "Welcome to New York", taylorsVersionId: "1hR8BSuEqPCCZfv93zzzz9" },
+  "1p80LdxRV74UKvL8gnD7ky": { trackName: "Blank Space", taylorsVersionId: "45wMBGri1PORPjM9PwFfrS" },
+  "4lIxdJw6W3Fg4vUIYCB0S5": { trackName: "Style", taylorsVersionId: "1hjRhYpWyqDpPahmSlUTlc" },
+  "5OndtwLGA9O6XHFcGm2H7r": { trackName: "Out of the Woods", taylorsVersionId: "045ZeOHPIzhxxsm8bq5kyE" },
+  "0dAb8TY433dl3ZfXYCLE19": { trackName: "All You Had To Do Was Stay", taylorsVersionId: "6GXgd1BPD9bUpqw5AntGV5" },
+  "5xTtaWoae3wi06K5WfVUUH": { trackName: "Shake It Off", taylorsVersionId: "3pv7Q5v2dpdefwdWIvE7yH" },
+  "3wmN11qXGL0HyPojvEE1D9": { trackName: "I Wish You Would", taylorsVersionId: "43y1WpBdnEy5TR9aZoSQL9" },
+  "273dCMFseLcVsoSWx59IoE": { trackName: "Bad Blood", taylorsVersionId: "64FzgoLZ3oXu2SriZblHic" },
+  "106R7Z57WYzBAfrXImV30y": { trackName: "Wildest Dreams", taylorsVersionId: "1K39ty6o1sHwwlZwO6a7wK" },
+  "4dYUOfmWna6DFccnz732n8": { trackName: "How You Get the Girl", taylorsVersionId: "75W3SngKzTuoQ94uLf3y82" },
+  "3oKMl2tJv4fdidkXUYMI5x": { trackName: "This Love", taylorsVersionId: "5QVVjX0ZItqlVpEuVCM9Yg" },
+  "3jBMHD19RZdAqG9iFQh7xc": { trackName: "I Know Places", taylorsVersionId: "2f0GI2ZLUtbGqFx8t2Gk6A" },
+  "06WgOCf0LV2h4keYXDRnuh": { trackName: "Clean", taylorsVersionId: "2ByBBvpR9b7IynvRmnG7kG" },
+
+  // 1989 (Deluxe Edition)
+  "33Kq0AT5rvwyE4azisG08x": { trackName: "Welcome to New York", taylorsVersionId: "1hR8BSuEqPCCZfv93zzzz9" },
+  "2sC2P3BN0IXujNaaSyDmtP": { trackName: "Blank Space", taylorsVersionId: "45wMBGri1PORPjM9PwFfrS" },
+  "1fo2ctLqj3zBhRQKOXprol": { trackName: "Style", taylorsVersionId: "1hjRhYpWyqDpPahmSlUTlc" },
+  "6Nde5KuTXyB7jlPO4upaBo": { trackName: "Out of the Woods", taylorsVersionId: "045ZeOHPIzhxxsm8bq5kyE" },
+  "0lmMtDQ2ElasKU2qDAE6NN": { trackName: "All You Had To Do Was Stay", taylorsVersionId: "6GXgd1BPD9bUpqw5AntGV5" },
+  "3fthfkkvy9av3q3uAGVf7U": { trackName: "Shake It Off", taylorsVersionId: "3pv7Q5v2dpdefwdWIvE7yH" },
+  "1B5VzXPqMlvRw0U4HJY3dJ": { trackName: "I Wish You Would", taylorsVersionId: "43y1WpBdnEy5TR9aZoSQL9" },
+  "0yN4fNzmVnmgC0dsOoi9Wh": { trackName: "Bad Blood", taylorsVersionId: "64FzgoLZ3oXu2SriZblHic" },
+  "59HjlYCeBsxdI0fcm3zglw": { trackName: "Wildest Dreams", taylorsVersionId: "1K39ty6o1sHwwlZwO6a7wK" },
+  "6wfugRLamFsTRbPcCpNnP7": { trackName: "How You Get the Girl", taylorsVersionId: "75W3SngKzTuoQ94uLf3y82" },
+  "1kTPQnabROVkW9bUXdCGrB": { trackName: "This Love", taylorsVersionId: "5QVVjX0ZItqlVpEuVCM9Yg" },
+  "2zfgVd034GlUvk7LqBHl6u": { trackName: "I Know Places", taylorsVersionId: "2f0GI2ZLUtbGqFx8t2Gk6A" },
+  "4bXCcoesMt8u99xMsbLr9U": { trackName: "Clean", taylorsVersionId: "2ByBBvpR9b7IynvRmnG7kG" },
+  "6iWMI5oOhWrDbLbjmwTWFq": { trackName: "Wonderland", taylorsVersionId: "2ve0kuaWUCt4Zx8x4bf1MR" },
+  "4A2LfnduSTsE8u0ecYROxE": { trackName: "You Are In Love", taylorsVersionId: "4UwqOWDpdeIDVQDuKT6iza" },
+  "6rZVy6FIG7lSJQMFXHo12z": { trackName: "New Romantics", taylorsVersionId: "2vPMoMDXxu9uX1igWZmXSG" },
+
   // Weird Ones and Singles
-  "3oKMl2tJv4fdidkXUYMI5x": {
-    taylorsVersionId: "4d1CG5ei1E2vGbvmgf5KKv",
-    trackName: "This Love",
-  },
-  "1kTPQnabROVkW9bUXdCGrB": {
-    taylorsVersionId: "4d1CG5ei1E2vGbvmgf5KKv",
-    trackName: "This Love",
-  },
-  "59HjlYCeBsxdI0fcm3zglw": {
-    taylorsVersionId: "1Ov37jtRQ2YNAe8HzfczkL",
-    trackName: "Wildest Dreams",
-  },
-  "106R7Z57WYzBAfrXImV30y": {
-    taylorsVersionId: "1Ov37jtRQ2YNAe8HzfczkL",
-    trackName: "Wildest Dreams",
-  },
+  "6xsEAm6w9oMQYYg3jkEkMT": { trackName: "Bad Blood ft Kendrick Lamar", taylorsVersionId: "" },
   "0vvt4IZOMkRug195S4MUq0": {
     taylorsVersionId: "0kAZ3H6G9Zac4PMpmobMkj",
     trackName: "If This Was a Movie",
