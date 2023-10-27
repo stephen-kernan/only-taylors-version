@@ -26,6 +26,14 @@ export const conversionMap = {
     taylorsVersionId: "5AEDGbliTTfjOB8TSm1sxt",
     trackName: "Speak Now (Standard Edition)"
   },
+  "2QJmrSgbdM35R67eoGQo4j": {
+    taylorsVersionId: "64LU4c1nfjz1t4VnGhagcg",
+    trackName: "1989"
+  },
+  "34OkZVpuzBa9y40DCy0LPR": {
+    taylorsVersionId: "64LU4c1nfjz1t4VnGhagcg",
+    trackName: "1989 (Deluxe Edition)"
+  },
 
   // ----------
   // TRACKS
