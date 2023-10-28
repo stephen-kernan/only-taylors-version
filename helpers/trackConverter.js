@@ -57,6 +57,9 @@ export const fetchCurrentUserID = async (token) => {
     .then(({ data }) => {
       return data.id
     })
+    .catch((err) => {
+      handleErrors(err)
+    })
 }
 
 export const fetchTracksInPlaylist = async (token, url, total) => {
@@ -313,18 +316,18 @@ export const replaceTracksInPlaylist = async (token, playlist, tenMinuteVersion)
     return [0, 0]
   }
 
-  await deleteTracksInPlaylist(
-    token,
-    playlist.id,
-    tracksToReplace.length,
-    tracksToReplace
-  )
-
   await addTracksToPlaylist(
     token,
     playlist.id,
     tracksToAdd.length,
     tracksToAdd
+  )
+
+  await deleteTracksInPlaylist(
+    token,
+    playlist.id,
+    tracksToReplace.length,
+    tracksToReplace
   )
 
   if (tracksToReplace.length) {
