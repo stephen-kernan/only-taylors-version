@@ -1,21 +1,33 @@
 import axios from 'axios'
 import { alternativeVersions, conversionMap } from './conversionMap'
+import {Mixpanel} from "./mixPanel";
 
 export const requestHeaders = (token) => ({
   Authorization: `Bearer ${token}`,
   'Content-Type': 'application/json'
 })
 
-export const handleErrors = (err) => {
-  if (err.response) {
-    const { data, status, headers } = err.response
+export const handleErrors = (e, props = {}) => {
+  const message = e?.message ?? ''
+  if (e.response) {
+    const { data, status, headers } = e.response
 
     if (status === 429) {
       console.warn('Rate limit exceeded')
+      Mixpanel.track("limitExceeded")
       return
     }
 
     console.error(`{ status: ${status}, data: ${data}, headers: ${headers}}`)
+    Mixpanel.track("error", {
+      status,
+      data,
+      headers,
+      message,
+      ...props
+    })
+  } else {
+    Mixpanel.track("error", {e, message, ...props})
   }
 }
 
@@ -26,6 +38,10 @@ export const fetchUserPlaylists = async (token, userID) => {
     })
     .then(({ data }) => {
       return [data.items, data.total]
+    })
+    .catch((err) => {
+      handleErrors(err, { line: '39' })
+      return [[], 0]
     })
 
   while (playlists.length < total) {
@@ -42,7 +58,7 @@ export const fetchUserPlaylists = async (token, userID) => {
         playlists.push(...data.items)
       })
       .catch((err) => {
-        handleErrors(err)
+        handleErrors(err, { line: '56' })
       })
   }
 
@@ -58,7 +74,7 @@ export const fetchCurrentUserID = async (token) => {
       return data.id
     })
     .catch((err) => {
-      handleErrors(err)
+      handleErrors(err, { line: '72' })
     })
 }
 
@@ -71,7 +87,7 @@ export const fetchTracksInPlaylist = async (token, url, total) => {
         tracksInPlaylist.push(...data.items)
       })
       .catch((err) => {
-        handleErrors(err)
+        handleErrors(err, { line: '85' })
       })
   }
   return tracksInPlaylist
@@ -84,8 +100,10 @@ export const addTracksToPlaylist = async (
   trackIds
 ) => {
   if (!trackIds || !trackIds.length) {
-    return
+    return false
   }
+
+  let noProblems = true
   for (let i = 0; i <= total; i += 100) {
     // i through i + 99 = 100 items. number 100 will be hit on next round
     const tracksToAdd = trackIds.slice(i, i + 99)
@@ -103,9 +121,12 @@ export const addTracksToPlaylist = async (
         console.log(data)
       })
       .catch((err) => {
-        handleErrors(err)
+        noProblems = false
+        handleErrors(err, { line: '117' })
       })
   }
+
+  return noProblems
 }
 
 export const deleteTracksInPlaylist = async (
@@ -129,7 +150,7 @@ export const deleteTracksInPlaylist = async (
         console.log(data)
       })
       .catch((err) => {
-        handleErrors(err)
+        handleErrors(err, { line: '143' })
       })
   }
 }
@@ -139,8 +160,9 @@ export const saveUserTracks = async (
   total,
   trackIds
 ) => {
-  if (!trackIds || !trackIds.length) return []
+  if (!trackIds || !trackIds.length) return false
 
+  let noProblems = true
   for (let i = 0; i <= total; i += 50) {
     // i through i + 99 = 100 items. number 100 will be hit on next round
     const tracksToAdd = trackIds.slice(i, i + 49)
@@ -153,9 +175,11 @@ export const saveUserTracks = async (
         }
       )
       .catch((err) => {
-        handleErrors(err)
+        noProblems = false
+        handleErrors(err, { line: '169' })
       })
   }
+  return noProblems
 }
 
 export const removeUserSavedTracks = async (token, total, trackIds) => {
@@ -170,7 +194,7 @@ export const removeUserSavedTracks = async (token, total, trackIds) => {
         data: { ids: tracksToDelete }
       })
       .catch((err) => {
-        handleErrors(err)
+        handleErrors(err, { line: '187' })
       })
   }
 }
@@ -179,8 +203,9 @@ export const saveUserAlbums = async (
   token,
   albumIds
 ) => {
-  if (!albumIds || !albumIds.length) return []
+  if (!albumIds || !albumIds.length) return false
 
+  let noProblems = true
   await axios
     .put(
       'https://api.spotify.com/v1/me/albums',
@@ -190,8 +215,11 @@ export const saveUserAlbums = async (
       }
     )
     .catch((err) => {
-      handleErrors(err)
+      noProblems = false
+      handleErrors(err, { line: '204' })
     })
+
+  return noProblems
 }
 
 export const removeUserSavedAlbums = async (
@@ -206,7 +234,7 @@ export const removeUserSavedAlbums = async (
       data: { ids: albumIds }
     })
     .catch((err) => {
-      handleErrors(err)
+      handleErrors(err, { line: '220' })
     })
 }
 
@@ -270,8 +298,11 @@ export const replaceUserSavedTracks = async (token, tenMinuteVersion) => {
     userSavedTracks, true, tenMinuteVersion
   )
 
-  await saveUserTracks(token, tracksToAdd.length, tracksToAdd)
-  await removeUserSavedTracks(token, tracksToReplace.length, tracksToReplace)
+  const success = await saveUserTracks(token, tracksToAdd.length, tracksToAdd)
+
+  if (success) {
+    await removeUserSavedTracks(token, tracksToReplace.length, tracksToReplace)
+  }
 
   // Return zero since these technically aren't in a playlist
   return [tracksToReplace.length, 0]
@@ -284,14 +315,19 @@ export const replaceUserSavedAlbums = async (token) => {
     { headers: requestHeaders(token) }
   ).then(({ data }) => {
     userSavedAlbums.push(...data.items)
+  }).catch((err) => {
+    handleErrors(err, { line: '299' })
   })
 
   const [albumsToReplace, albumsToAdd, totalTracksReplaced] = await findOldAlbums(
     userSavedAlbums
   )
 
-  await saveUserAlbums(token, albumsToAdd)
-  await removeUserSavedAlbums(token, albumsToReplace)
+  const success = await saveUserAlbums(token, albumsToAdd)
+
+  if (success) {
+    await removeUserSavedAlbums(token, albumsToReplace)
+  }
 
   // Return zero since these technically aren't in a playlist
   return [totalTracksReplaced, 0]
@@ -316,23 +352,26 @@ export const replaceTracksInPlaylist = async (token, playlist, tenMinuteVersion)
     return [0, 0]
   }
 
-  await addTracksToPlaylist(
+  const success = await addTracksToPlaylist(
     token,
     playlist.id,
     tracksToAdd.length,
     tracksToAdd
   )
 
-  await deleteTracksInPlaylist(
-    token,
-    playlist.id,
-    tracksToReplace.length,
-    tracksToReplace
-  )
+  if (success) {
+    await deleteTracksInPlaylist(
+      token,
+      playlist.id,
+      tracksToReplace.length,
+      tracksToReplace
+    )
 
-  if (tracksToReplace.length) {
-    numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length
+    if (tracksToReplace.length) {
+      numberOfTracksUpdated = numberOfTracksUpdated + tracksToReplace.length
+    }
   }
+
 
   return [numberOfTracksUpdated, 1]
 }
@@ -372,7 +411,9 @@ export const replaceWithTaylorsVersion = async (token, tenMinuteVersion) => {
 
     return `/thank-you?tracks=${numberOfTracksUpdated}&playlists=${numberOfPlaylistsUpdated}`
   } catch (err) {
-    console.error(err)
+    const { name, message } = err
+    console.error(`${name}: ${message}`)
+    Mixpanel.track("error", { err: {name, message}, line: "415" })
     return '/uh-oh'
   }
 }
