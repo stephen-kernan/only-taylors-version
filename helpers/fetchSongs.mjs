@@ -5,29 +5,40 @@ const HEADERS = {
 }
 
 const fetchSongs = async () => {
-  const albumsResponse = await axios.get(
-    "https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02/albums",
-    {
-      headers: HEADERS
-    }
-  )
+  let albumsResponse = {}
+  try {
+    albumsResponse = await axios.get(
+      "https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02/albums",
+      {
+        headers: HEADERS
+      }
+    )
+  } catch (e) {
+    console.error(`Error on first request: ${HEADERS}`)
+  }
   const { items: albums } = albumsResponse.data
 
   let taylorsVersionID = ''
 
-  for (const album in albums) {
-    if (album.name === "1989") {
+  for (const album of albums) {
+    if (album.name === "1989 (Taylor's Version)") {
       taylorsVersionID = album.id
     }
   }
 
-  const tracksResponse = await axios.get(
-    `https://api.spotify.com/v1/albums/${taylorsVersionID}`
-  )
-  const { items: tracks } = tracksResponse.data
+  let tracksResponse = {}
+  try {
+    tracksResponse = await axios.get(
+      `https://api.spotify.com/v1/albums/${taylorsVersionID}`,
+      { headers: HEADERS }
+    )
+  } catch (e) {
+    console.error("Failed on second request")
+  }
 
+  const { items: trackList } = tracksResponse.data.tracks
   let trackMap = {}
-  for (const track of tracks) {
+  for (const track of trackList) {
     trackMap[track.name] = track.id
   }
 

@@ -1,7 +1,8 @@
 import {
   Checkbox,
   CircularProgress,
-  CssBaseline, FormControlLabel,
+  CssBaseline,
+  FormControlLabel,
   Grid,
   ThemeProvider,
   Typography,
@@ -18,17 +19,28 @@ import { replaceWithTaylorsVersion } from "../helpers/trackConverter";
 import { theme } from "../public/theme";
 
 import styles from "../styles/main.module.css";
+import { TrackConverterV2 } from "../helpers/TrackConverterV2";
 
 export const LoadingResults = () => {
   return (
     <div>
       <Grid container spacing={4} className={styles.pageContent}>
-        <Grid item xs={12} sx={{marginTop: "5rem"}} className={styles.paragraphContainer}>
+        <Grid
+          item
+          xs={12}
+          sx={{ marginTop: "5rem" }}
+          className={styles.paragraphContainer}
+        >
           <CircularProgress />
         </Grid>
         <Grid item xs={12} className={styles.paragraphContainer}>
-          <Typography variant="p" component="p" className={styles.paragraphText}>
-            Are we in the clear yet? <br /> Please wait, this can take a minute. Your updated playlists are enchanted to meet you!
+          <Typography
+            variant="p"
+            component="p"
+            className={styles.paragraphText}
+          >
+            Are we in the clear yet? <br /> Please wait, this can take a minute.
+            Your updated playlists are enchanted to meet you!
           </Typography>
         </Grid>
       </Grid>
@@ -37,12 +49,12 @@ export const LoadingResults = () => {
 };
 
 export const ConfirmationContent = ({ confirmChoice }) => {
-  const [useTenMinuteVersion, setUseTenMinuteVersion] = useState(false)
+  const [useTenMinuteVersion, setUseTenMinuteVersion] = useState(false);
 
   const toggleTenMinute = () => {
-    setUseTenMinuteVersion(!useTenMinuteVersion)
-    console.log(useTenMinuteVersion)
-  }
+    setUseTenMinuteVersion(!useTenMinuteVersion);
+    console.log(useTenMinuteVersion);
+  };
 
   return (
     <div className={styles.pageContent}>
@@ -63,20 +75,22 @@ export const ConfirmationContent = ({ confirmChoice }) => {
             component="p"
             className={styles.paragraphText}
           >
-            Just making sure you are okay with replacing all of your Taylor Swift
-            songs on your playlists with Taylor’s Version. There is no way to
-            reverse it. No need to cry like a baby coming home from the bar, just
-            click the button below!
+            Just making sure you are okay with replacing all of your Taylor
+            Swift songs on your playlists with Taylor’s Version. There is no way
+            to reverse it. No need to cry like a baby coming home from the bar,
+            just click the button below!
           </Typography>
           <Typography
             variant="body1"
             component="p"
             className={styles.paragraphText}
-          >
-          </Typography>
+          ></Typography>
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-          <PrimaryButton label="Replace Tracks" fn={() => confirmChoice(useTenMinuteVersion)} />
+          <PrimaryButton
+            label="Replace Tracks"
+            fn={() => confirmChoice(useTenMinuteVersion)}
+          />
           <br />
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
@@ -85,9 +99,7 @@ export const ConfirmationContent = ({ confirmChoice }) => {
             onClick={toggleTenMinute}
             checked={useTenMinuteVersion}
             className={styles.formLabel}
-            control={
-              <Checkbox />
-            }
+            control={<Checkbox />}
           />
         </Grid>
       </Grid>
@@ -118,7 +130,8 @@ export const Confirmation = () => {
     Mixpanel.track("User clicked confirm", { tenMinuteVersion });
     setLoading(true);
     if (token) {
-      const url = await replaceWithTaylorsVersion(token, tenMinuteVersion);
+      const converter = new TrackConverterV2(token, tenMinuteVersion);
+      const url = await converter.replaceWithTaylorsVersion();
       if (url) {
         window.location = url;
       }
